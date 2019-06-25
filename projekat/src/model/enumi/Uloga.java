@@ -1,4 +1,4 @@
-package model;
+package model.enumi;
 
 import java.io.Serializable;
 
@@ -8,12 +8,8 @@ import java.io.Serializable;
  * Purpose: Defines the Class Uloga
  ***********************************************************************/
 
-import java.util.*;
-
 /** @pdOid 46ffaea1-059e-4233-b46d-abda346a8ea8 */
-public enum Uloga implements Serializable{
-   administrator,
-   menadzer,
-   kupac;
+public enum Uloga implements Serializable {
+	administrator, menadzer, kupac;
 
 }

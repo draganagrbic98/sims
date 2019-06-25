@@ -13,13 +13,13 @@ import javax.swing.JTextField;
 import model.Artikal;
 import net.miginfocom.swing.MigLayout;
 
-public class ArtikalPanel extends JPanel{
-	
+public class ArtikalPanel extends JPanel {
+
 	private Artikal artikal;
 	private CenterPanel centerPanel;
-	
+
 	public ArtikalPanel(Artikal artikal, CenterPanel centerPanel) {
-		
+
 		this.artikal = artikal;
 		this.centerPanel = centerPanel;
 		this.setLayout(new BorderLayout());
@@ -32,17 +32,16 @@ public class ArtikalPanel extends JPanel{
 		this.add(picture, BorderLayout.CENTER);
 		JButton ob = new JButton("Open");
 		this.add(ob, BorderLayout.SOUTH);
-		
+
 		ob.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				centerPanel.setProduct(artikal);
 			}
 		});
-		
-		
+
 	}
 
 }

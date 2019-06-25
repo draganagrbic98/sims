@@ -10,60 +10,65 @@ import java.io.Serializable;
 
 import java.util.*;
 
+import model.enumi.RazlogPovratka;
+
 /** @pdOid 44b11464-a191-407e-a91b-be9c87b48edf */
-public class Povratak implements Serializable{
-   /** @pdOid 3dc7465e-00a9-4501-bc7f-b0b1f2522aed */
-   private Date datum;
-   /** @pdOid 97db674e-1c91-4bd3-9003-5eca366d3393 */
-   private RazlogPovratka razlog;
-   
-   /** @pdRoleInfo migr=no name=Skladistenje assc=association23 mult=1..1 */
-   private Skladistenje skladiste;
-   /** @pdRoleInfo migr=no name=StavkaNarudzbenice assc=association22 mult=1..1 side=A */
-   private StavkaNarudzbenice stavka;
-   
-   public Povratak() {
-	   super();
-   }
+public class Povratak implements Serializable {
+	/** @pdOid 3dc7465e-00a9-4501-bc7f-b0b1f2522aed */
+	private Date datum;
+	/** @pdOid 97db674e-1c91-4bd3-9003-5eca366d3393 */
+	private RazlogPovratka razlog;
 
-   public Povratak(Date datum, RazlogPovratka razlog, Skladistenje skladiste, StavkaNarudzbenice stavka) {
-	   super();
-	   this.datum = datum;
-	   this.razlog = razlog;
-	   this.skladiste = skladiste;
-	   this.stavka = stavka;
-   }
+	/** @pdRoleInfo migr=no name=Skladistenje assc=association23 mult=1..1 */
+	private Skladistenje skladiste;
+	/**
+	 * @pdRoleInfo migr=no name=StavkaNarudzbenice assc=association22 mult=1..1
+	 *             side=A
+	 */
+	private StavkaNarudzbenice stavka;
 
-public Date getDatum() {
-	return datum;
-}
+	public Povratak() {
+		super();
+	}
 
-public void setDatum(Date datum) {
-	this.datum = datum;
-}
+	public Povratak(Date datum, RazlogPovratka razlog, Skladistenje skladiste, StavkaNarudzbenice stavka) {
+		super();
+		this.datum = datum;
+		this.razlog = razlog;
+		this.skladiste = skladiste;
+		this.stavka = stavka;
+	}
 
-public RazlogPovratka getRazlog() {
-	return razlog;
-}
+	public Date getDatum() {
+		return datum;
+	}
 
-public void setRazlog(RazlogPovratka razlog) {
-	this.razlog = razlog;
-}
+	public void setDatum(Date datum) {
+		this.datum = datum;
+	}
 
-public Skladistenje getSkladiste() {
-	return skladiste;
-}
+	public RazlogPovratka getRazlog() {
+		return razlog;
+	}
 
-public void setSkladiste(Skladistenje skladiste) {
-	this.skladiste = skladiste;
-}
+	public void setRazlog(RazlogPovratka razlog) {
+		this.razlog = razlog;
+	}
 
-public StavkaNarudzbenice getStavka() {
-	return stavka;
-}
+	public Skladistenje getSkladiste() {
+		return skladiste;
+	}
 
-public void setStavka(StavkaNarudzbenice stavka) {
-	this.stavka = stavka;
-}
-   
+	public void setSkladiste(Skladistenje skladiste) {
+		this.skladiste = skladiste;
+	}
+
+	public StavkaNarudzbenice getStavka() {
+		return stavka;
+	}
+
+	public void setStavka(StavkaNarudzbenice stavka) {
+		this.stavka = stavka;
+	}
+
 }

@@ -6,10 +6,10 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Korisnik;
 
-public class ManagerModel extends AbstractTableModel{
+public class ManagerModel extends AbstractTableModel {
 
-	private String[] columnNames = {"Korisnicko ime", "Lozinka"};
-	
+	private String[] columnNames = { "Korisnicko ime", "Lozinka" };
+
 	private List<Korisnik> managers;
 
 	public ManagerModel(List<Korisnik> menadzeri) {
@@ -37,17 +37,17 @@ public class ManagerModel extends AbstractTableModel{
 			return k.getKorisnickoIme();
 		return k.getLozinka();
 	}
-	
+
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		// TODO Auto-generated method stub
 		return this.columnNames[column];
 	}
-	
+
 }
