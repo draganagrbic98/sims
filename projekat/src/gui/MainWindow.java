@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 
 import model.WebShop;
 
@@ -28,8 +29,13 @@ public class MainWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
+		JScrollPane scrollCenterPanel = new JScrollPane(this.centerPanel);
+		
+		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
+		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
+
 		this.add(this.centerPanel.getNorthPanel(), BorderLayout.NORTH);
-		this.add(this.centerPanel, BorderLayout.CENTER);
+		this.add(scrollCenterPanel, BorderLayout.CENTER);
 
 		this.centerPanel.setWelcomeMessage();
 		this.northPanel = this.centerPanel.getNorthPanel();

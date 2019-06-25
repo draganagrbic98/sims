@@ -1,9 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -40,7 +38,7 @@ public class CenterPanel extends JPanel {
 	private static int minh_tf = 25;
 	private NorthPanel northPanel;
 	private WebShop webShop;
-
+	
 	public WebShop getWebShop() {
 		return webShop;
 	}
@@ -119,30 +117,53 @@ public class CenterPanel extends JPanel {
 
 		this.setDefault();
 
-		JLabel anl = new JLabel(product.getNaziv());
-		this.add(anl, "growx, wrap");
+		BufferedImage art_pic = null;
 
-		JPanel picture = new JPanel(new MigLayout("fill"));
-		picture.setBackground(Color.DARK_GRAY);
-		JTextField pictureName = new JTextField("Slika");
-		pictureName.setEditable(false);
-		picture.add(pictureName, "growx, growy");
-		this.add(picture, "growx, growy, wrap");
+		try {
+			art_pic = ImageIO.read(new File("art_default_img.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JLabel picLabel = new JLabel(new ImageIcon(art_pic));
+		this.add(picLabel, "pushx, growx, wrap");
+
+		JLabel anl = new JLabel("Naziv: ");
+		anl.setSize(minw_l, minh_l);
+		anl.setMinimumSize(anl.getSize());
+		this.add(anl, "al center, pushx, split2");
+
+		JTextField atf = new JTextField();
+		atf.setText(product.getNaziv());
+		atf.setEditable(false);
+		atf.setSize(minw_tf, minh_tf);
+		atf.setMinimumSize(atf.getSize());
+		this.add(atf, "al center, pushx, wrap");
 
 		JLabel dl = new JLabel("Opis: ");
-		this.add(dl);
+		dl.setSize(minw_l, minh_l);
+		dl.setMinimumSize(dl.getSize());
+		this.add(dl, "al center, pushx, split2");
 
 		JTextField dtf = new JTextField();
 		dtf.setText(product.getOpis());
 		dtf.setEditable(false);
-		this.add(dtf, "growx, wrap");
+		dtf.setSize(minw_tf, minh_tf);
+		dtf.setMinimumSize(dtf.getSize());
+		this.add(dtf, "al center, pushx, wrap");
 
 		JLabel pl = new JLabel("Cena: ");
-		this.add(pl);
+		pl.setSize(minw_l, minh_l);
+		pl.setMinimumSize(pl.getSize());
+		this.add(pl, "al center, pushx, split2");
+
 		JTextField ptf = new JTextField();
 		ptf.setText(product.getCena() == null ? "nema" : product.getCena().getCena() + "");
 		ptf.setEditable(false);
-		this.add(ptf, "growx, wrap");
+		ptf.setSize(minw_tf, minh_tf);
+		ptf.setMinimumSize(ptf.getSize());
+		this.add(ptf, "al center, pushx, wrap");
 
 		this.refresh();
 
@@ -152,18 +173,29 @@ public class CenterPanel extends JPanel {
 
 		if (products.isEmpty()) {
 			this.setDefault();
-			this.add(new JLabel("NEMA ARTIKALA"), "align center, wrap");
+			this.add(new JLabel("Nema artikala!"), "align center, wrap");
 			this.refresh();
 			return;
 		}
 
 		this.removeAll();
 
-		this.setLayout(new GridLayout(0, 4));
+		this.setLayout(new MigLayout("gap 5px 10px"));
 
-		for (Artikal a : products)
-			this.add(new ArtikalPanel(a, this));
-
+		int brojac = 0;
+		
+		for (Artikal a : products) {
+			if (brojac == 1) {
+				this.add(new ArtikalPanel(a, this), "al center, pushx, split 2, wrap");
+				brojac = 0;
+				continue;
+			}
+			else {
+				this.add(new ArtikalPanel(a, this), "al center, pushx, split 2");
+			}
+			++brojac;
+		}
+		
 		this.refresh();
 
 	}
@@ -198,7 +230,7 @@ public class CenterPanel extends JPanel {
 		nl.setSize(minw_l, minh_l);
 		nl.setMinimumSize(nl.getSize());
 		this.add(nl, "al center, pushx, split2");
-		
+
 		JTextField ntf = new JTextField();
 		ntf.setSize(minw_tf, minh_tf);
 		ntf.setMinimumSize(ntf.getSize());
@@ -208,7 +240,7 @@ public class CenterPanel extends JPanel {
 		sl.setSize(minw_l, minh_l);
 		sl.setMinimumSize(sl.getSize());
 		this.add(sl, "al center, pushx, split2");
-		
+
 		JTextField stf = new JTextField();
 		stf.setSize(minw_tf, minh_tf);
 		stf.setMinimumSize(stf.getSize());
@@ -218,7 +250,7 @@ public class CenterPanel extends JPanel {
 		el.setSize(minw_l, minh_l);
 		el.setMinimumSize(el.getSize());
 		this.add(el, "al center, pushx, split2");
-		
+
 		JTextField etf = new JTextField();
 		etf.setSize(minw_tf, minh_tf);
 		etf.setMinimumSize(etf.getSize());
@@ -228,17 +260,17 @@ public class CenterPanel extends JPanel {
 		al.setSize(minw_l, minh_l);
 		al.setMinimumSize(al.getSize());
 		this.add(al, "al center, pushx, split2");
-		
+
 		JTextField atf = new JTextField();
 		atf.setSize(minw_tf, minh_tf);
 		atf.setMinimumSize(atf.getSize());
 		this.add(atf, "al center, pushx, wrap");
-		
+
 		JLabel pl = new JLabel("Mesto: ");
 		pl.setSize(minw_l, minh_l);
 		pl.setMinimumSize(pl.getSize());
 		this.add(pl, "al center, pushx, split2");
-		
+
 		JTextField ptf = new JTextField();
 		ptf.setSize(minw_tf, minh_tf);
 		ptf.setMinimumSize(ptf.getSize());
@@ -248,7 +280,7 @@ public class CenterPanel extends JPanel {
 		unl.setSize(minw_l, minh_l);
 		unl.setMinimumSize(unl.getSize());
 		this.add(unl, "al center, pushx, split2");
-		
+
 		JTextField untf = new JTextField();
 		untf.setSize(minw_tf, minh_tf);
 		untf.setMinimumSize(untf.getSize());
@@ -258,7 +290,7 @@ public class CenterPanel extends JPanel {
 		psl.setSize(minw_l, minh_l);
 		psl.setMinimumSize(psl.getSize());
 		this.add(psl, "al center, pushx, split2");
-		
+
 		JTextField pstf = new JTextField();
 		pstf.setSize(minw_tf, minh_tf);
 		pstf.setMinimumSize(pstf.getSize());
@@ -410,7 +442,7 @@ public class CenterPanel extends JPanel {
 		unl.setSize(minw_l, minh_l);
 		unl.setMinimumSize(unl.getSize());
 		this.add(unl, "al center, pushx, split2");
-		
+
 		JTextField untf = new JTextField();
 		untf.setSize(minw_tf, minh_tf);
 		untf.setMinimumSize(untf.getSize());
@@ -420,7 +452,7 @@ public class CenterPanel extends JPanel {
 		psl.setSize(minw_l, minh_l);
 		psl.setMinimumSize(psl.getSize());
 		this.add(psl, "al center, pushx, split2");
-		
+
 		JTextField pstf = new JTextField();
 		pstf.setSize(minw_tf, minh_tf);
 		pstf.setMinimumSize(pstf.getSize());
@@ -530,7 +562,7 @@ public class CenterPanel extends JPanel {
 		cl.setSize(minw_l, minh_l);
 		cl.setMinimumSize(cl.getSize());
 		this.add(cl, "al center, pushx, split2");
-		
+
 		JTextField ctf = new JTextField();
 		ctf.setSize(minw_tf, minh_tf);
 		ctf.setMinimumSize(ctf.getSize());
@@ -540,7 +572,7 @@ public class CenterPanel extends JPanel {
 		nl.setSize(minw_l, minh_l);
 		nl.setMinimumSize(nl.getSize());
 		this.add(nl, "al center, pushx, split2");
-		
+
 		JTextField ntf = new JTextField();
 		ntf.setSize(minw_tf, minh_tf);
 		ntf.setMinimumSize(ntf.getSize());
@@ -550,7 +582,7 @@ public class CenterPanel extends JPanel {
 		dl.setSize(minw_l, minh_l);
 		dl.setMinimumSize(dl.getSize());
 		this.add(dl, "al center, pushx, split2");
-		
+
 		JTextField dtf = new JTextField();
 		dtf.setSize(minw_tf, minh_tf);
 		dtf.setMinimumSize(dtf.getSize());
@@ -607,7 +639,7 @@ public class CenterPanel extends JPanel {
 		cl.setSize(minw_l, minh_l);
 		cl.setMinimumSize(cl.getSize());
 		this.add(cl, "al center, pushx, split2");
-		
+
 		JTextField ctf = new JTextField();
 		ctf.setSize(minw_tf, minh_tf);
 		ctf.setMinimumSize(ctf.getSize());
@@ -649,29 +681,41 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		if (webShop.getCenovnici().isEmpty()) {
-			this.add(new JLabel("Nema cenovnika!"), "align center");
+			this.add(new JLabel("Nema cenovnika!"), "al center, wrap");
 			this.refresh();
 			return;
 
 		}
 
+		BufferedImage cen_art_add_pic = null;
+
+		try {
+			cen_art_add_pic = ImageIO.read(new File("cen_art_add_img.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JLabel picLabel = new JLabel(new ImageIcon(cen_art_add_pic));
+		this.add(picLabel, "pushx, growx, wrap");
+
 		String[] array = new String[this.webShop.artikliSaStaromCenom().size()];
-		
+
 		int i = 0;
 		for (Artikal a : this.webShop.artikliSaStaromCenom())
 			array[i++] = a.getSifra() + "";
-		
+
 		JLabel cbl = new JLabel("Izaberite artikal: ");
 		cbl.setSize(minw_l, minh_l);
 		cbl.setMinimumSize(cbl.getSize());
 		this.add(cbl, "al center, pushx, split2");
-		
+
 		JComboBox<String> cb = new JComboBox<String>(array);
 		cb.setSize(minw_tf, minh_tf);
 		cb.setMinimumSize(cb.getSize());
-		cb.setMaximumSize(new Dimension(minw_tf*2,minh_tf));
+		cb.setMaximumSize(new Dimension(minw_tf * 2, minh_tf));
 		this.add(cb, "al center, pushx, wrap");
-		
+
 		// dodaj da se ne moze dodati cena ako ne postoji cenovnik
 		Cenovnik cenovnik = this.webShop.getCenovnik();
 		Collection<StavkaCenovnika> stavke = new ArrayList<>();
@@ -690,7 +734,7 @@ public class CenterPanel extends JPanel {
 		cl.setSize(minw_l, minh_l);
 		cl.setMinimumSize(cl.getSize());
 		this.add(cl, "al center, pushx, split2");
-		
+
 		JTextField ctf = new JTextField();
 		ctf.setEditable(false);
 		ctf.setSize(minw_tf, minh_tf);
@@ -702,7 +746,7 @@ public class CenterPanel extends JPanel {
 		pl.setSize(minw_l, minh_l);
 		pl.setMinimumSize(pl.getSize());
 		this.add(pl, "al center, pushx, split2");
-		
+
 		JTextField ptf = new JTextField();
 		ptf.setSize(minw_tf, minh_tf);
 		ptf.setMinimumSize(ptf.getSize());
@@ -744,7 +788,7 @@ public class CenterPanel extends JPanel {
 	public void setCreatePriceListPanel() {
 
 		this.setDefault();
-		
+
 		BufferedImage cen_add_pic = null;
 
 		try {
@@ -756,24 +800,24 @@ public class CenterPanel extends JPanel {
 
 		JLabel picLabel = new JLabel(new ImageIcon(cen_add_pic));
 		this.add(picLabel, "pushx, growx, wrap");
-		
+
 		String[] array = new String[this.webShop.getArtikli().size()];
-		
+
 		int i = 0;
 		for (Artikal a : this.webShop.getArtikli())
 			array[i++] = a.getSifra() + "";
-		
+
 		JLabel cbl = new JLabel("Izaberite artikal: ");
 		cbl.setSize(minw_l, minh_l);
 		cbl.setMinimumSize(cbl.getSize());
 		this.add(cbl, "al center, pushx, split2");
-		
+
 		JComboBox<String> cb = new JComboBox<String>(array);
 		cb.setSize(minw_tf, minh_tf);
 		cb.setMinimumSize(cb.getSize());
-		cb.setMaximumSize(new Dimension(minw_tf*2,minh_tf));
+		cb.setMaximumSize(new Dimension(minw_tf * 2, minh_tf));
 		this.add(cb, "al center, pushx, growx, wrap");
-		
+
 		Cenovnik cenovnik = new Cenovnik();
 		Collection<StavkaCenovnika> stavke = new ArrayList<>();
 
@@ -781,7 +825,7 @@ public class CenterPanel extends JPanel {
 
 		JButton cplb = new JButton("Kreiraj cenovnik");
 		this.add(cplb, "al center, pushx, wrap");
-		
+
 		cplb.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

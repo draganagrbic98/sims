@@ -1,14 +1,20 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import model.Artikal;
 import net.miginfocom.swing.MigLayout;
@@ -22,16 +28,36 @@ public class ArtikalPanel extends JPanel {
 
 		this.artikal = artikal;
 		this.centerPanel = centerPanel;
-		this.setLayout(new BorderLayout());
-		this.add(new JLabel(this.artikal.getNaziv()), BorderLayout.NORTH);
-		JPanel picture = new JPanel(new MigLayout("fill"));
-		picture.setBackground(Color.DARK_GRAY);
-		JTextField pictureName = new JTextField("Slika");
-		pictureName.setEditable(false);
-		picture.add(pictureName, "growx, growy");
-		this.add(picture, BorderLayout.CENTER);
-		JButton ob = new JButton("Open");
-		this.add(ob, BorderLayout.SOUTH);
+		this.setLayout(new MigLayout("fill"));
+
+		this.setSize(370, 500);
+		this.setMinimumSize(this.getSize());
+		this.setMaximumSize(this.getSize());
+		
+		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
+		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
+		this.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
+
+		BufferedImage art_pic = null;
+
+		try {
+			art_pic = ImageIO.read(new File("art_default_img.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Image art_pic_scaled = art_pic.getScaledInstance(350, 300, java.awt.Image.SCALE_SMOOTH);
+		JLabel picLabel = new JLabel(new ImageIcon(art_pic_scaled));
+		this.add(picLabel, "al left, top, wrap");
+
+		JLabel al = new JLabel(this.artikal.getNaziv());
+		al.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		
+		this.add(al, "al center, wrap");
+
+		JButton ob = new JButton("Vise informacija");
+		this.add(ob, "al center, wrap");
 
 		ob.addActionListener(new ActionListener() {
 
