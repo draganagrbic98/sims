@@ -21,6 +21,9 @@ public class Kupac implements Serializable {
 	/** @pdOid 3f891db1-356e-46db-a825-118f5f7d791b */
 	private String adresa;
 
+	/** @pdOid 753ff223-d150-45f8-ae84-fb001dd5bbd5 */
+	private int brojNarudzbenica;
+	
 	/**
 	 * @pdRoleInfo migr=no name=Narudzbenica assc=association7
 	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
@@ -88,6 +91,7 @@ public class Kupac implements Serializable {
 			this.narudzbenice.add(newNarudzbenica);
 			newNarudzbenica.setKupac(this);
 		}
+		this.brojNarudzbenica++;	//JEL OVO OK?????????
 	}
 
 	/**
@@ -218,5 +222,10 @@ public class Kupac implements Serializable {
 	public void setKorisnik(Korisnik korisnik) {
 		this.korisnik = korisnik;
 	}
+
+	public int getBrojNarudzbenica() {
+		return brojNarudzbenica;
+	}
+	
 
 }

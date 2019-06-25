@@ -13,6 +13,7 @@ import net.miginfocom.swing.MigLayout;
 public class NorthPanel extends JPanel {
 
 	private CenterPanel centerPanel;
+	
 
 	public NorthPanel(CenterPanel centerPanel) {
 		super();
@@ -212,6 +213,19 @@ public class NorthPanel extends JPanel {
 		this.setDefault();
 		this.addSignOutButton();
 
+		JButton ob = new JButton("Narudzbenice");
+		this.add(ob);
+		
+		ob.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				centerPanel.setOrdersPanel();
+			}
+		});
+		
+		/*
 		JButton bab = new JButton("Korpa");
 		this.add(bab);
 		bab.addActionListener(new ActionListener() {
@@ -244,7 +258,8 @@ public class NorthPanel extends JPanel {
 				centerPanel.setCreateOrderPanel();
 			}
 		});
-
+	*/
+		
 		this.refresh();
 
 	}

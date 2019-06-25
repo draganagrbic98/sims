@@ -19,8 +19,7 @@ public class StavkaNarudzbenice implements Serializable {
 
 	/** @pdRoleInfo migr=no name=Artikal assc=association9 mult=1..1 */
 	private Artikal artikal;
-	/** @pdRoleInfo migr=no name=Skladistenje assc=association20 mult=0..1 */
-	private Skladistenje prodaja;
+
 	/** @pdRoleInfo migr=no name=Povratak assc=association22 mult=0..1 */
 	private Povratak povracaj;
 	/** @pdRoleInfo migr=no name=Narudzbenica assc=association8 mult=1..1 side=A */
@@ -30,15 +29,22 @@ public class StavkaNarudzbenice implements Serializable {
 		super();
 	}
 
-	public StavkaNarudzbenice(double cena, int kolicina, double ukupnaCena, Artikal artikal,
-			Narudzbenica narudzbenica) {
+
+
+
+	public StavkaNarudzbenice(Artikal artikal, Narudzbenica narudzbenica) {
 		super();
-		this.cena = cena;
-		this.kolicina = kolicina;
-		this.ukupnaCena = ukupnaCena;
 		this.artikal = artikal;
 		this.narudzbenica = narudzbenica;
+		this.cena = this.artikal.getCena().getCena();
+		
+		this.kolicina = 1;
+		this.ukupnaCena = this.cena * this.kolicina;
+		
 	}
+
+
+
 
 	/** @pdGenerated default parent getter */
 	public Narudzbenica getNarudzbenica() {
@@ -95,13 +101,7 @@ public class StavkaNarudzbenice implements Serializable {
 		this.artikal = artikal;
 	}
 
-	public Skladistenje getProdaja() {
-		return prodaja;
-	}
 
-	public void setProdaja(Skladistenje prodaja) {
-		this.prodaja = prodaja;
-	}
 
 	public Povratak getPovracaj() {
 		return povracaj;
@@ -111,4 +111,12 @@ public class StavkaNarudzbenice implements Serializable {
 		this.povracaj = povracaj;
 	}
 
+	public void povecajKolicinu() {
+		
+		++this.kolicina;
+		this.ukupnaCena = this.kolicina * this.cena;
+		
+		
+	}
+	
 }

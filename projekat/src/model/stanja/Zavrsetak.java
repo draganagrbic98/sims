@@ -8,13 +8,25 @@ package model.stanja;
 
 import java.util.*;
 
+import model.Narudzbenica;
+
 /** @pdOid b93c6d2b-6a1b-4113-af7e-84317386d5d2 */
 public class Zavrsetak extends Stanje {
-   /** @pdOid be41bea3-d693-4fa6-a610-ad3883b3b4ff */
+   public Zavrsetak(Narudzbenica narudzbenica) {
+		super(narudzbenica);
+		// TODO Auto-generated constructor stub
+	}
+
+/** @pdOid be41bea3-d693-4fa6-a610-ad3883b3b4ff */
    @Override
 	public void entry() {
 		// TODO Auto-generated method stub
-		super.entry();
+
+	   this.narudzbenica.blokirajDodavanje();
+	   this.narudzbenica.blokirajBrisanje();
+	   this.narudzbenica.blokirajZavrsetak();
+	   this.narudzbenica.omoguciKupovinu();
+	   
 	}
    
    /** @pdOid 6bc7b73f-a8e8-4991-93a8-ada5bbacd24d */
@@ -43,7 +55,25 @@ public class Zavrsetak extends Stanje {
    @Override
 	public void obavljenoPlacanje() {
 		// TODO Auto-generated method stub
-		super.obavljenoPlacanje();
+
+	   Stanje novo = new Naruceno(this.narudzbenica);
+	   this.narudzbenica.promeniStanje(novo);
+	   
+	   
+	}
+   
+   /** @pdOid be7cadcb-8960-4443-a60b-6173cb31d2df */
+   @Override
+	public void omoguciKupovinu() {
+		// TODO Auto-generated method stub
+		super.omoguciKupovinu();
 	}
 
+   /** @pdOid 110fbd22-2e8d-4e18-be7b-a109114318de */
+   @Override
+	public void onemoguciBrisanjeNarudzbenice() {
+		// TODO Auto-generated method stub
+		super.onemoguciBrisanjeNarudzbenice();
+	}
+   
 }

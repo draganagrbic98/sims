@@ -706,4 +706,25 @@ public class WebShop implements Serializable {
 
 	}
 
+	  
+	   /** @param broj 
+	    * @param datum 
+	    * @param adresa 
+	    * @param kupac
+	    * @pdOid b7cf08f2-32df-4531-af79-0327ab88ad91 */
+	   public void dodajNarudzbenicu(int broj, Date datum, String adresa, Kupac kupac) {
+	      // TODO: implement
+		   this.narudzbenice.add(new Narudzbenica(kupac.getBrojNarudzbenica(), new Date(), adresa, kupac));
+	   }
+	   
+	   public void dodajNarudzbenicu(Narudzbenica narudbenica) {
+		   this.narudzbenice.add(narudbenica);
+		   
+	   }
+	   
+	   public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
+		   this.narudzbenice.remove(narudzbenica);
+		   
+	   }
+	
 }

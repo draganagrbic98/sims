@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -9,11 +10,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,19 +29,27 @@ import model.Cenovnik;
 import model.Korisnik;
 import model.Kupac;
 import model.Mesto;
+import model.Narudzbenica;
 import model.StavkaCenovnika;
 import model.WebShop;
 import model.enumi.Uloga;
 import net.miginfocom.swing.MigLayout;
 
-public class CenterPanel extends JPanel {
+public class CenterPanel extends JPanel{
 	private static int minw_l = 100;
 	private static int minh_l = 25;
 	private static int minw_tf = 200;
 	private static int minh_tf = 25;
 	private NorthPanel northPanel;
 	private WebShop webShop;
+	private Korisnik currentUser;
 	
+	
+	
+	public Korisnik getCurrentUser() {
+		return currentUser;
+	}
+
 	public WebShop getWebShop() {
 		return webShop;
 	}
@@ -47,10 +58,12 @@ public class CenterPanel extends JPanel {
 		this.webShop = webShop;
 	}
 
-	private void refresh() {
+	public void refresh() {
 
 		this.revalidate();
 		this.repaint();
+		//public da bi ga zvao narudbenica frame
+		
 
 	}
 
@@ -109,6 +122,24 @@ public class CenterPanel extends JPanel {
 		this.add(picLabel, "left, push, grow");
 		this.refresh();
 
+	}
+	
+	public void setOrder(Narudzbenica order) {
+		
+		//OVO OVDE URADIIIIIIIIIIII
+		
+		this.setDefault();
+		
+
+
+		NarudzbenicaFrame nf = new NarudzbenicaFrame(order, this);
+		this.add(nf, "growx, growy");
+		
+
+		
+		
+		this.refresh();
+		
 	}
 
 	public void setProduct(Artikal product) {
@@ -318,6 +349,9 @@ public class CenterPanel extends JPanel {
 							stf.getText(), etf.getText(), atf.getText(), new Mesto(ptf.getText())));
 
 					logIn(Uloga.kupac);
+					currentUser = webShop.nadjiKorisnika(untf.getText());
+					System.out.println(currentUser.getKorisnickoIme());
+
 				}
 
 			}
@@ -398,6 +432,8 @@ public class CenterPanel extends JPanel {
 								JOptionPane.ERROR_MESSAGE);
 					else {
 						logIn(k.getUloga());
+						currentUser = webShop.nadjiKorisnika(untf.getText());
+						System.out.println(currentUser.getKorisnickoIme());
 
 					}
 				}
@@ -844,6 +880,55 @@ public class CenterPanel extends JPanel {
 
 	}
 
+	
+	
+	public void setOrdersPanel() {
+		
+		System.out.println("HURA");
+		
+		
+		//OVO JE SAMO PROBNI GUI, TREBA GA SREDITI
+		
+		Kupac customer = this.currentUser.getKupac();
+		Collection<Narudzbenica> orders = customer.getNarudzbenice();
+		
+		this.removeAll();
+		this.setLayout(new GridLayout(0, 4));
+		
+		for (Narudzbenica o: orders)
+			this.add(new NarudzbenicaPanel(o, this));
+		
+		
+		JButton co = new JButton("Dodaj narudzbenicu");
+		this.add(co);
+		CenterPanel temp = this;	//MORAM OVO DA NAPISEM
+		
+		co.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("KLIK");
+
+				String adresa = (String) JOptionPane.showInputDialog(null, "Unesite adresu isporuke", "Adresa narudzbenice", JOptionPane.QUESTION_MESSAGE, null, null, "");
+				//dodaj proveru da li je za adresu unet prazan string!!!!!!!!!! i da li je pritisnut cancel
+				
+				Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), new Date(), adresa, customer);
+				
+				webShop.dodajNarudzbenicu(order);
+				add(new NarudzbenicaPanel(order, temp));
+				refresh();
+				//JEL OVO OK????????????
+				
+			}
+		});
+		
+		
+		this.refresh();
+		
+	}
+	
+	/*
 	public void setBusketPanel() {
 
 	}
@@ -855,5 +940,6 @@ public class CenterPanel extends JPanel {
 	public void setCreateOrderPanel() {
 
 	}
-
+	*/
+	
 }
