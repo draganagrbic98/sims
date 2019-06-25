@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 import java.util.*;
 
-import model.stanja.Formiranje;
 import model.stanja.Stanje;
 
 /** @pdOid 841a9edc-6a7d-4f68-8d7f-489ea357ad9e */
@@ -34,7 +33,7 @@ public class Narudzbenica implements Serializable {
 
 	public Narudzbenica() {
 		super();
-		this.stanje = new Formiranje();
+		//this.stanje = new Formiranje();
 		this.stavke = new ArrayList<>();
 	}
 
@@ -133,6 +132,77 @@ public class Narudzbenica implements Serializable {
 			}
 		}
 	}
+	
+	
+	  
+	   /** @param stanje
+	    * @pdOid 991b789d-2de6-4ac0-af54-ca5310c47327 */
+	   public void promeniStanje(Stanje stanje) {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid d2169036-121b-46a8-b1f9-da38321f8d90 */
+	   public void blokirajDodavanje() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid 585f3f45-74a5-4b68-a8f9-0b011abc681a */
+	   public void blokirajBrisanje() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid 2561f36e-77f6-4433-86c2-0627513f5d8e */
+	   public void blokirajZavrsetak() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid e99b87af-b977-4992-8ab8-248b79a3058e */
+	   public void blokirajKupovinu() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid 478404de-4c71-4ef9-b5ec-e56ecc5f3375 */
+	   public void omoguciBrisanje() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid e0f80957-5a89-472e-b286-470c391cc881 */
+	   public void omoguciZavrsetak() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid a393f354-6472-4f49-bb97-4a8948ec543e */
+	   public void osveziPrikaz() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid c107dc71-5e26-411a-922d-160b9570d73a */
+	   public void posaljiRobu() {
+	      // TODO: implement
+	   }
+	   
+	   /** @param artikal
+	    * @pdOid 9a2a52de-2724-4e1c-9023-0bd6f9f55038 */
+	   public void dodajStavku(Artikal artikal) {
+	      // TODO: implement
+	   }
+	   
+	   /** @param stavka
+	    * @pdOid 46a89f67-befe-4c1c-841e-c22c63ae32d8 */
+	   public void obrisiStavku(StavkaNarudzbenice stavka) {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid 4e84ebd3-3f30-423f-84fb-0a274f791698 */
+	   public void aktiviranZavrsetak() {
+	      // TODO: implement
+	   }
+	   
+	   /** @pdOid 5c12eb01-e259-40d3-83ca-0a5d75f212d6 */
+	   public void obavljenoPlacanje() {
+	      // TODO: implement
+	   }
+	
 
 	public int getBroj() {
 		return broj;

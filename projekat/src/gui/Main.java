@@ -2,8 +2,11 @@ package gui;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import model.WebShop;
 
 public class Main {
@@ -13,9 +16,9 @@ public class Main {
 		// veze)
 
 		/*
-		 * ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
-		 * out.writeObject(new WebShop("WAU")); out.flush(); out.close();
-		 */
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
+		out.writeObject(new WebShop("WAU")); out.flush(); out.close();
+		*/
 
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("out"));
 		WebShop ws = (WebShop) in.readObject();
