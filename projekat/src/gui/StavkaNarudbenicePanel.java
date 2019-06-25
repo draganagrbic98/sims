@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import model.Narudzbenica;
 import model.StavkaNarudzbenice;
@@ -25,6 +26,15 @@ public class StavkaNarudbenicePanel extends JPanel{
 		
 		JLabel nl = new JLabel(this.stavka.getArtikal().getNaziv());
 		this.add(nl, BorderLayout.NORTH);
+		
+		
+		JLabel al = new JLabel("Kolicina: ");
+		this.add(al);
+		JTextField atf = new JTextField();
+		atf.setText(stavka.getKolicina() + "");
+		atf.setEditable(false);
+		this.add(atf);
+		
 		
 		JButton rb = new JButton("Obrisi");
 		this.add(rb, BorderLayout.SOUTH);

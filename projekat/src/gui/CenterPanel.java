@@ -133,6 +133,7 @@ public class CenterPanel extends JPanel{
 
 
 		NarudzbenicaFrame nf = new NarudzbenicaFrame(order, this);
+		System.out.println(order);
 		this.add(nf, "growx, growy");
 		
 

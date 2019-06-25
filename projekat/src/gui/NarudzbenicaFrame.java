@@ -89,6 +89,7 @@ public class NarudzbenicaFrame extends JPanel implements Observer{
 			this.removeProductButton.setEnabled(false);
 			this.finishButton.setEnabled(false);
 			this.buyButton.setEnabled(false);
+			System.out.println(this.buyButton);
 			this.deleteOrderButton.setEnabled(false);
 
 			break;

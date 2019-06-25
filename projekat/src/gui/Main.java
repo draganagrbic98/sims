@@ -15,10 +15,10 @@ public class Main {
 		// konstukotere sredi tako da kad postavis jedan postavi i drugog (povratne
 		// veze)
 
-		
+		/*
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
 		out.writeObject(new WebShop("WAU")); out.flush(); out.close();
-		
+		*/
 
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("out"));
 		WebShop ws = (WebShop) in.readObject();
