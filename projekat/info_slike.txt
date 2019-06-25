@@ -1,0 +1,10 @@
+Paleta boja:
+	- svetlo nebo plava
+	- svetlo roze/ljubicasta
+	- crna i crvena slova
+
+Koriscen font Algeria
+Velicine slova:
+	- 50 za naslove
+	- 25-30 za ostalo
+
