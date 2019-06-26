@@ -8,8 +8,10 @@ import java.io.Serializable;
  * Purpose: Defines the Class Uloga
  ***********************************************************************/
 
-/** @pdOid 46ffaea1-059e-4233-b46d-abda346a8ea8 */
-public enum Uloga implements Serializable {
-	administrator, menadzer, kupac;
+/** @pdOid bfceb335-697f-4dc0-b757-4c4affb16707 */
+public enum Uloga implements Serializable{
+   administrator,
+   menadzer,
+   kupac;
 
 }

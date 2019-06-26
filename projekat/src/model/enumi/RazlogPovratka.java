@@ -8,8 +8,9 @@ import java.io.Serializable;
  * Purpose: Defines the Class RazlogPovratka
  ***********************************************************************/
 
-/** @pdOid 6e44d046-8544-48f5-a8a4-220fc741fc57 */
-public enum RazlogPovratka implements Serializable {
-	ostecenaRoba, pogresnaRoba;
+/** @pdOid 256f6aa1-7ce8-43cf-af3d-86a5c8822e6d */
+public enum RazlogPovratka implements Serializable{
+   ostecenaRoba,
+   pogresnaRoba;
 
 }
