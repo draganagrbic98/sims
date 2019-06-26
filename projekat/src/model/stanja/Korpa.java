@@ -61,7 +61,7 @@ public class Korpa extends Stanje {
 	public void aktiviranZavrsetak() {
 		// TODO Auto-generated method stub
 
-	   Stanje novo = new Zavrsetak(this.narudzbenica);
+	   Stanje novo = new Zavrsena(this.narudzbenica);
 	   this.narudzbenica.promeniStanje(novo);
 	   
 	   

@@ -11,8 +11,8 @@ import java.util.*;
 import model.Narudzbenica;
 
 /** @pdOid b93c6d2b-6a1b-4113-af7e-84317386d5d2 */
-public class Zavrsetak extends Stanje {
-   public Zavrsetak(Narudzbenica narudzbenica) {
+public class Zavrsena extends Stanje {
+   public Zavrsena(Narudzbenica narudzbenica) {
 		super(narudzbenica);
 		// TODO Auto-generated constructor stub
 	}

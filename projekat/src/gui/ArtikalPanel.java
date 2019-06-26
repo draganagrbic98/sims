@@ -53,7 +53,6 @@ public class ArtikalPanel extends JPanel {
 
 		JLabel al = new JLabel(this.artikal.getNaziv());
 		al.setFont(new Font("Times New Roman", Font.PLAIN, 27));
-		
 		this.add(al, "al center, wrap");
 
 		JButton ob = new JButton("Vise informacija");

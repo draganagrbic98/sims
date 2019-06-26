@@ -13,7 +13,6 @@ import net.miginfocom.swing.MigLayout;
 public class NorthPanel extends JPanel {
 
 	private CenterPanel centerPanel;
-	
 
 	public NorthPanel(CenterPanel centerPanel) {
 		super();
@@ -36,13 +35,13 @@ public class NorthPanel extends JPanel {
 		JButton pb = new JButton("Artikli");
 		stf.setSize(200, 25);
 		stf.setMinimumSize(stf.getSize());
-		
+
 		pb.setSize(100, 25);
 		pb.setMinimumSize(pb.getSize());
-		
+
 		this.add(sl);
 		this.add(stf);
-		this.add(pb);
+		this.add(pb, "gapx 25px");
 
 		stf.addActionListener(new ActionListener() {
 
@@ -99,7 +98,7 @@ public class NorthPanel extends JPanel {
 	private void addSignOutButton() {
 
 		JButton sob = new JButton("Odjava");
-		this.add(sob);
+		this.add(sob, "al right, pushx");
 		sob.addActionListener(new ActionListener() {
 
 			@Override
@@ -117,7 +116,6 @@ public class NorthPanel extends JPanel {
 	public void setAdministratorPanel() {
 
 		this.setDefault();
-		this.addSignOutButton();
 
 		JButton mb = new JButton("Menadzeri");
 		this.add(mb);
@@ -131,7 +129,7 @@ public class NorthPanel extends JPanel {
 		});
 
 		JButton cmb = new JButton("Kreiraj menadzera");
-		this.add(cmb);
+		this.add(cmb, "gapx 25px");
 		cmb.addActionListener(new ActionListener() {
 
 			@Override
@@ -152,16 +150,18 @@ public class NorthPanel extends JPanel {
 			}
 		});
 
-		this.refresh();
+		this.addSignOutButton();
 
+		this.refresh();
 	}
 
 	public void setManagerPanel() {
 
 		this.setDefault();
-		this.addSignOutButton();
+
 		JButton cp = new JButton("Kreiraj artikal");
-		this.add(cp);
+		this.add(cp, "gapx 25px");
+
 		cp.addActionListener(new ActionListener() {
 
 			@Override
@@ -204,64 +204,49 @@ public class NorthPanel extends JPanel {
 			}
 		});
 
-		this.refresh();
+		this.addSignOutButton();
 
+		this.refresh();
 	}
 
 	public void setCustomerPanel() {
 
 		this.setDefault();
-		this.addSignOutButton();
 
 		JButton ob = new JButton("Narudzbenice");
 		this.add(ob);
-		
+
 		ob.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				centerPanel.setOrdersPanel();
 			}
 		});
-		
+
 		/*
-		JButton bab = new JButton("Korpa");
-		this.add(bab);
-		bab.addActionListener(new ActionListener() {
+		 * JButton bab = new JButton("Korpa"); this.add(bab); bab.addActionListener(new
+		 * ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
+		 * method stub centerPanel.setBusketPanel(); } });
+		 * 
+		 * JButton bob = new JButton("Kupljeno"); this.add(bob);
+		 * bob.addActionListener(new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
+		 * method stub centerPanel.setBoughtPanel(); } });
+		 * 
+		 * JButton co = new JButton("Kreiraj narudzbenicu"); this.add(co);
+		 * co.addActionListener(new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
+		 * method stub centerPanel.setCreateOrderPanel(); } });
+		 */
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				centerPanel.setBusketPanel();
-			}
-		});
+		this.addSignOutButton();
 
-		JButton bob = new JButton("Kupljeno");
-		this.add(bob);
-		bob.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				centerPanel.setBoughtPanel();
-			}
-		});
-
-		JButton co = new JButton("Kreiraj narudzbenicu");
-		this.add(co);
-		co.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				centerPanel.setCreateOrderPanel();
-			}
-		});
-	*/
-		
 		this.refresh();
-
 	}
-
 }

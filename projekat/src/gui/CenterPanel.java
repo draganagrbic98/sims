@@ -2,7 +2,6 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -16,7 +15,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,7 +33,7 @@ import model.WebShop;
 import model.enumi.Uloga;
 import net.miginfocom.swing.MigLayout;
 
-public class CenterPanel extends JPanel{
+public class CenterPanel extends JPanel {
 	private static int minw_l = 100;
 	private static int minh_l = 25;
 	private static int minw_tf = 200;
@@ -43,9 +41,7 @@ public class CenterPanel extends JPanel{
 	private NorthPanel northPanel;
 	private WebShop webShop;
 	private Korisnik currentUser;
-	
-	
-	
+
 	public Korisnik getCurrentUser() {
 		return currentUser;
 	}
@@ -62,8 +58,7 @@ public class CenterPanel extends JPanel{
 
 		this.revalidate();
 		this.repaint();
-		//public da bi ga zvao narudbenica frame
-		
+		// public da bi ga zvao narudbenica frame
 
 	}
 
@@ -123,24 +118,19 @@ public class CenterPanel extends JPanel{
 		this.refresh();
 
 	}
-	
-	public void setOrder(Narudzbenica order) {
-		
-		//OVO OVDE URADIIIIIIIIIIII
-		
-		this.setDefault();
-		
 
+	public void setOrder(Narudzbenica order) {
+
+		// OVO OVDE URADIIIIIIIIIIII
+
+		this.setDefault();
 
 		NarudzbenicaFrame nf = new NarudzbenicaFrame(order, this);
 		System.out.println(order);
 		this.add(nf, "growx, growy");
-		
 
-		
-		
 		this.refresh();
-		
+
 	}
 
 	public void setProduct(Artikal product) {
@@ -215,19 +205,18 @@ public class CenterPanel extends JPanel{
 		this.setLayout(new MigLayout("gap 5px 10px"));
 
 		int brojac = 0;
-		
+
 		for (Artikal a : products) {
 			if (brojac == 1) {
 				this.add(new ArtikalPanel(a, this), "al center, pushx, split 2, wrap");
 				brojac = 0;
 				continue;
-			}
-			else {
+			} else {
 				this.add(new ArtikalPanel(a, this), "al center, pushx, split 2");
 			}
 			++brojac;
 		}
-		
+
 		this.refresh();
 
 	}
@@ -881,66 +870,94 @@ public class CenterPanel extends JPanel{
 
 	}
 
-	
-	
 	public void setOrdersPanel() {
-		
+
 		System.out.println("HURA");
-		
-		
-		//OVO JE SAMO PROBNI GUI, TREBA GA SREDITI
-		
+
+		// OVO JE SAMO PROBNI GUI, TREBA GA SREDITI
+
 		Kupac customer = this.currentUser.getKupac();
 		Collection<Narudzbenica> orders = customer.getNarudzbenice();
-		
+
 		this.removeAll();
-		this.setLayout(new GridLayout(0, 4));
-		
-		for (Narudzbenica o: orders)
-			this.add(new NarudzbenicaPanel(o, this));
-		
-		
+
+		this.setLayout(new MigLayout("gap 5px 10px"));
+
+		JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
+		JScrollPane scrollCenterPanel = new JScrollPane(sveNarudzbenice);
+
+		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
+		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
+
+		int brojac = 0;
+
+		for (Narudzbenica o : orders) {
+			if (brojac == 2) {
+				sveNarudzbenice.add(new NarudzbenicaPanel(o, this), "al center, pushx, split 3, wrap");
+				brojac = 0;
+				continue;
+			} else {
+				sveNarudzbenice.add(new NarudzbenicaPanel(o, this), "al center, pushx, split 3");
+			}
+			++brojac;
+		}
+
 		JButton co = new JButton("Dodaj narudzbenicu");
-		this.add(co);
-		CenterPanel temp = this;	//MORAM OVO DA NAPISEM
-		
+		this.add(co, "al left, top");
+
+		this.add(scrollCenterPanel, "al left, grow, push");
+
+		CenterPanel temp = this; // MORAM OVO DA NAPISEM
+
 		co.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("KLIK");
 
-				String adresa = (String) JOptionPane.showInputDialog(null, "Unesite adresu isporuke", "Adresa narudzbenice", JOptionPane.QUESTION_MESSAGE, null, null, "");
-				//dodaj proveru da li je za adresu unet prazan string!!!!!!!!!! i da li je pritisnut cancel
-				
-				Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), new Date(), adresa, customer);
-				
-				webShop.dodajNarudzbenicu(order);
-				add(new NarudzbenicaPanel(order, temp));
-				refresh();
-				//JEL OVO OK????????????
-				
+				Object retval = JOptionPane.showInputDialog(null, "Unesite adresu isporuke", "Adresa narudzbenice",
+						JOptionPane.QUESTION_MESSAGE, null, null, "");
+				// dodaj proveru da li je za adresu unet prazan string!!!!!!!!!! i da li je
+				// pritisnut cancel
+
+				if (retval != null) {
+					String adresa = (String) retval;
+
+					if (!adresa.trim().isEmpty()) {
+						Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), new Date(), adresa,
+								customer);
+
+						webShop.dodajNarudzbenicu(order);
+						sveNarudzbenice.add(new NarudzbenicaPanel(order, temp));
+						refresh();
+					} else {
+						JOptionPane.showMessageDialog(null, "Nije uneta adresa!", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Nije uneta adresa!", "Greska",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
-		
-		
+
 		this.refresh();
-		
+
 	}
-	
+
 	/*
-	public void setBusketPanel() {
+	 * public void setBusketPanel() {
+	 * 
+	 * }
+	 * 
+	 * public void setBoughtPanel() {
+	 * 
+	 * }
+	 * 
+	 * public void setCreateOrderPanel() {
+	 * 
+	 * }
+	 */
 
-	}
-
-	public void setBoughtPanel() {
-
-	}
-
-	public void setCreateOrderPanel() {
-
-	}
-	*/
-	
 }
