@@ -167,11 +167,11 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 
 				for (Artikal a : centerPanel.getWebShop().getArtikli()) {
 					if (brojac == 1) {
-						sviArtikli.add(new ArtikalBuyPanel(a, order), "al center, pushx, split 2, wrap");
+						sviArtikli.add(new BuyArtikalPanel(a, order), "al center, pushx, split 2, wrap");
 						brojac = 0;
 						continue;
 					} else {
-						sviArtikli.add(new ArtikalBuyPanel(a, order), "al center, pushx, split 2");
+						sviArtikli.add(new BuyArtikalPanel(a, order), "al center, pushx, split 2");
 					}
 					++brojac;
 				}

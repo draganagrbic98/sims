@@ -13,13 +13,13 @@ import model.Artikal;
 import model.Narudzbenica;
 import net.miginfocom.swing.MigLayout;
 
-public class ArtikalBuyPanel extends JPanel{
+public class BuyArtikalPanel extends JPanel{
 
 	private Artikal artikal;
 
 	private Narudzbenica order;
 	
-	public ArtikalBuyPanel(Artikal artikal, Narudzbenica order) {
+	public BuyArtikalPanel(Artikal artikal, Narudzbenica order) {
 		super();
 		this.artikal = artikal;
 		this.order = order;
