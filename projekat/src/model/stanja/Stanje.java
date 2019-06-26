@@ -2,65 +2,34 @@ package model.stanja;
 
 import java.io.Serializable;
 
-import model.Narudzbenica;
-
 /***********************************************************************
  * Module:  Stanje.java
  * Author:  Dragana
  * Purpose: Defines the Class Stanje
  ***********************************************************************/
 
-/** @pdOid 474537ed-4d12-462f-a222-83ca48cb62c0 */
-public abstract class Stanje implements Serializable {
-	 /** @pdRoleInfo migr=no name=Narudzbenica assc=association21 mult=0..1 side=A */
-	   protected Narudzbenica narudzbenica;
-	   
-	   /** @pdOid 436f31d0-9bc5-4840-ba27-05b009c6be9c */
-	   public void entry() {
-	      // TODO: implement
-		   //BACI IZUZETAK
-	   }
-	   
-	   /** @pdOid 70992fae-4399-436d-8a90-f8a5525fdc4b */
-	   public void dodatArtikal() {
-	      // TODO: implement
-		   
-		   
-	   }
-	   
-	   /** @param kolicina
-	    * @pdOid eb3c71b2-549b-4b36-a0ec-8b4254749f09 */
-	   public void obrisanArtikal(int kolicina) {
-	      // TODO: implement
-	   }
-	   
-	   /** @pdOid f677f27b-6a4e-44e7-b418-9b0e56f3892d */
-	   public void aktiviranZavrsetak() {
-	      // TODO: implement
-	   }
-	   
-	   /** @pdOid 20ec244e-ecf0-45a2-a7d8-b65e2c6930ab */
-	   public void obavljenoPlacanje() {
-	      // TODO: implement
-	   }
-	   
-	   /** @pdOid fa7a452a-f471-4c76-b96c-8cde65c3c781 */
-	   public void omoguciKupovinu() {
-	      // TODO: implement
-	   }
-	   
-	   
-	   /** @pdOid 110fbd22-2e8d-4e18-be7b-a109114318de */
-	   public void onemoguciBrisanjeNarudzbenice() {
-	      // TODO: implement
-	   }
+import model.Narudzbenica;
 
-
-	public Stanje(Narudzbenica narudzbenica) {
-		super();
-		this.narudzbenica = narudzbenica;
-	}
-	   
-	   
+/** @pdOid 01fbead1-e742-4b4b-a63d-e26825ddbb14 */
+public abstract class Stanje implements Serializable{
+   /** @pdRoleInfo migr=no name=Narudzbenica assc=association17 mult=0..1 side=A */
+   protected Narudzbenica narudzbenica;
+   
+   public Stanje(Narudzbenica narudzbenica) {
+	   super();
+	   this.narudzbenica = narudzbenica;
+   }
+   
+/** @pdOid 9a143760-dbfe-4597-a092-0b464f94a63b */
+   public abstract void entry();
+   /** @pdOid 41e33100-b92b-46f5-9a67-e138d134b1a2 */
+   public abstract void dodatArtikal();
+   /** @param kolicina
+    * @pdOid fe98ec10-c0c3-4c24-9d30-5ed1fb3546ce */
+   public abstract void obrisanArtikal(int kolicina);
+   /** @pdOid d1fa6ac3-5bae-449f-a4eb-adcc29c5b0e0 */
+   public abstract void aktiviranZavrsetak();
+   /** @pdOid d142a5a5-fea5-4398-8a7d-6ceffc72f16e */
+   public abstract void obavljenoPlacanje();
 
 }

@@ -123,7 +123,7 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 		this.add(this.deleteOrderButton, "al center, pushx, wrap");
 
 		switch (this.order.getStanje().getClass().getSimpleName()) {
-		case "Zavrsetak":
+		case "Zavrsena":
 			this.addProductButton.setEnabled(false);
 			this.removeProductButton.setEnabled(false);
 			this.finishButton.setEnabled(false);

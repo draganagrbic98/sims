@@ -6,88 +6,59 @@ package model.stanja;
  * Purpose: Defines the Class Korpa
  ***********************************************************************/
 
-import java.util.*;
-
 import model.Narudzbenica;
 
-/** @pdOid 04e0b605-2315-4f50-8423-9d1319ff4e90 */
+/** @pdOid 89b821b0-48cc-496e-b465-9f85b5ded19c */
 public class Korpa extends Stanje {
-   public Korpa(Narudzbenica narudzbenica) {
+   
+	public Korpa(Narudzbenica narudzbenica) {
 		super(narudzbenica);
 		// TODO Auto-generated constructor stub
 	}
 
-/** @pdOid 6325bcf7-496c-49e6-881d-f7150ec9773f */
-   @Override
+	/** @pdOid 8a545c31-d840-4e31-8550-f694c75d891d */
+	@Override
 	public void entry() {
-		// TODO Auto-generated method stub
+      // TODO: implement
 		this.narudzbenica.osveziPrikaz();
-		
-	}
+   }
    
-   /** @pdOid f2696c27-b638-425c-b50c-8564b908c9af */
-   @Override
+   /** @pdOid ddac0a25-4d06-4f05-975d-0d1569f5bc45 */
+	@Override
 	public void dodatArtikal() {
-		// TODO Auto-generated method stub
-	   this.narudzbenica.omoguciBrisanje();
-	   this.narudzbenica.omoguciZavrsetak();
-	   this.narudzbenica.promeniStanje(this);
-
-	}
+      // TODO: implement
+		this.narudzbenica.omoguciBrisanje();
+		this.narudzbenica.omoguciZavrsetak();
+		this.narudzbenica.promeniStanje(this);
+   }
    
    /** @param kolicina
-    * @pdOid ba27d326-e316-46d6-9f6a-eba1a25801a6 */
-   @Override
+    * @pdOid 62d4e4ef-6b69-46e1-b7cf-dcf176bd304b */
+	@Override
 	public void obrisanArtikal(int kolicina) {
-		// TODO Auto-generated method stub
-
-	   if (kolicina > 0) {
-		   
-		   this.narudzbenica.promeniStanje(this);
-		   
-	   }
-	   else {
-		   
-		   this.narudzbenica.blokirajBrisanje();
-		   this.narudzbenica.blokirajZavrsetak();
-		   this.narudzbenica.promeniStanje(this);
-		   
-	   }
-	   
-	}
+      // TODO: implement
+		if (kolicina > 0) {
+			this.narudzbenica.promeniStanje(this);
+		}
+		else {
+			this.narudzbenica.blokirajBrisanje();
+			this.narudzbenica.blokirajZavrsetak();
+			this.narudzbenica.promeniStanje(this);
+		}
+   }
    
-   /** @pdOid 9791475b-4c5b-45c3-821d-fd5fa1ab6ff5 */
-   @Override
+   /** @pdOid 98097c8c-e811-44b3-b092-1076db76e41c */
+	@Override
 	public void aktiviranZavrsetak() {
-		// TODO Auto-generated method stub
-
-	   Stanje novo = new Zavrsena(this.narudzbenica);
-	   this.narudzbenica.promeniStanje(novo);
-	   
-	   
-	}
+      // TODO: implement
+		Stanje novoStanje = new Zavrsena(this.narudzbenica);
+		this.narudzbenica.promeniStanje(novoStanje);
+   }
    
-   /** @pdOid bb0e8dea-106a-4fec-b048-3b0ffc492f9b */
-   @Override
+   /** @pdOid 4a19a158-a38f-4106-9417-815c0e218044 */
+	@Override
 	public void obavljenoPlacanje() {
-		// TODO Auto-generated method stub
-		super.obavljenoPlacanje();
-	}
-   
-   /** @pdOid be7cadcb-8960-4443-a60b-6173cb31d2df */
-   @Override
-	public void omoguciKupovinu() {
-		// TODO Auto-generated method stub
-		super.omoguciKupovinu();
-	}
-
-   
-   /** @pdOid 110fbd22-2e8d-4e18-be7b-a109114318de */
-   @Override
-	public void onemoguciBrisanjeNarudzbenice() {
-		// TODO Auto-generated method stub
-		super.onemoguciBrisanjeNarudzbenice();
-	}
-
+      // TODO: implement
+   }
 
 }

@@ -1,74 +1,53 @@
 package model.stanja;
 
-/***********************************************************************
- * Module:  Naruceno.java
- * Author:  Dragana
- * Purpose: Defines the Class Naruceno
- ***********************************************************************/
-
-import java.util.*;
-
 import model.Narudzbenica;
 
-/** @pdOid 75b155e7-3cb7-451e-85f1-77159ae3bc83 */
+/***********************************************************************
+ * Module:  Kupljeno.java
+ * Author:  Dragana
+ * Purpose: Defines the Class Kupljeno
+ ***********************************************************************/
+
+/** @pdOid 4d4d6f90-e2ec-4c46-b379-cafcf3f8a12d */
 public class Kupljeno extends Stanje {
-   public Kupljeno(Narudzbenica narudzbenica) {
+   
+	public Kupljeno(Narudzbenica narudzbenica) {
 		super(narudzbenica);
 		// TODO Auto-generated constructor stub
 	}
 
-/** @pdOid d2de1930-6502-4222-8b03-0f9437c0bd65 */
-   @Override
+	/** @pdOid d38fca7d-e71b-4df8-b6f4-35d0670a1fa0 */
+	@Override
 	public void entry() {
-		// TODO Auto-generated method stub
-
+      // TODO: implement
 	   this.narudzbenica.blokirajKupovinu();
+	   this.narudzbenica.blokirajBrisanjeNarudzbenice();
 	   this.narudzbenica.posaljiRobu();
-	   this.narudzbenica.onemoguciBrisanjeNarudzbenice();
-	   
-	}
+   }
    
-   /** @pdOid e1f443e6-9e4c-4379-b29b-f22ad71d5e11 */
-   @Override
+   /** @pdOid 45d9939b-6cc1-45f4-920c-a7b7751414ea */
+	@Override
 	public void dodatArtikal() {
-		// TODO Auto-generated method stub
-		super.dodatArtikal();
-	}
+      // TODO: implement
+   }
    
    /** @param kolicina
-    * @pdOid e0fb2b98-7b4d-4d2a-99b4-314a95600fd3 */
-   @Override
+    * @pdOid 15a03227-1d6b-428c-af9b-fb324fb2a16d */
+	@Override
 	public void obrisanArtikal(int kolicina) {
-		// TODO Auto-generated method stub
-		super.obrisanArtikal(kolicina);
-	}
+      // TODO: implement
+   }
    
-   /** @pdOid b94b3db5-ab25-42bc-b8a7-a339c532ac16 */
-   @Override
+   /** @pdOid 5ff30fb8-4498-43b1-9fcf-f427fd33270c */
+	@Override
 	public void aktiviranZavrsetak() {
-		// TODO Auto-generated method stub
-		super.aktiviranZavrsetak();
-	}
+      // TODO: implement
+   }
    
-   /** @pdOid 233b4bf7-5cc3-448d-b2c5-9c31d576e3f0 */
-   @Override
+   /** @pdOid 69674019-1995-420f-8cba-898b3a71284a */
+	@Override
 	public void obavljenoPlacanje() {
-		// TODO Auto-generated method stub
-		super.obavljenoPlacanje();
-	}
-   
-   /** @pdOid be7cadcb-8960-4443-a60b-6173cb31d2df */
-   @Override
-	public void omoguciKupovinu() {
-		// TODO Auto-generated method stub
-		super.omoguciKupovinu();
-	}
+      // TODO: implement
+   }
 
-   /** @pdOid 110fbd22-2e8d-4e18-be7b-a109114318de */
-   @Override
-	public void onemoguciBrisanjeNarudzbenice() {
-		// TODO Auto-generated method stub
-		super.onemoguciBrisanjeNarudzbenice();
-	}
-   
 }

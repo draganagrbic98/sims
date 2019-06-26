@@ -264,7 +264,7 @@ public class Narudzbenica extends Observable implements Serializable {
 	}
 
 	/** @pdOid 110fbd22-2e8d-4e18-be7b-a109114318de */
-	public void onemoguciBrisanjeNarudzbenice() {
+	public void blokirajBrisanjeNarudzbenice() {
 		// TODO: implement
 		this.setChanged();
 		this.notifyObservers(ButtonEnabled.DELETE_ORDER_DISABLE);
