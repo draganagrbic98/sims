@@ -56,7 +56,7 @@ public class Zavrsena extends Stanje {
 	public void obavljenoPlacanje() {
 		// TODO Auto-generated method stub
 
-	   Stanje novo = new Naruceno(this.narudzbenica);
+	   Stanje novo = new Kupljeno(this.narudzbenica);
 	   this.narudzbenica.promeniStanje(novo);
 	   
 	   

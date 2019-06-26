@@ -36,7 +36,8 @@ public class StavkaNarudzbenice implements Serializable {
 		super();
 		this.artikal = artikal;
 		this.narudzbenica = narudzbenica;
-		this.cena = this.artikal.getCena().getCena();
+		this.cena = this.artikal.getCena();
+		
 		
 		this.kolicina = 1;
 		this.ukupnaCena = this.cena * this.kolicina;

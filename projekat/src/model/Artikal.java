@@ -275,7 +275,7 @@ public class Artikal implements Serializable {
 
 	}
 
-	public StavkaCenovnika getCena() {
+	public StavkaCenovnika getStavkaCenovnika() {
 
 		if (this.cene.isEmpty())
 			return null;
@@ -283,5 +283,15 @@ public class Artikal implements Serializable {
 		// OVO MALO SREDI!!
 
 	}
+	
+	public double getCena() {
+		
+		if (this.getStavkaCenovnika() == null)
+			return 0;
+		return this.getStavkaCenovnika().getCena();
+		
+		
+	}
+
 
 }

@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -22,7 +21,7 @@ import model.StavkaNarudzbenice;
 import model.enumi.ButtonEnabled;
 import net.miginfocom.swing.MigLayout;
 
-public class NarudzbenicaFrame extends JPanel implements Observer {
+public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 	private static int minw_l = 150;
 	private static int minh_l = 25;
@@ -30,60 +29,58 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 	private static int minh_tf = 25;
 	
 	private Narudzbenica order;
+	private CenterPanel centerPanel;
+	private JTextField stateName;
 	private JTextField productsNumber;
 	private JTextField totalPrice;
 	private JButton addProductButton;
 	private JButton removeProductButton;
 	private JButton finishButton;
 	private JButton buyButton;
-	private CenterPanel centerPanel;
-	private JTextField stateName;
 	private JButton deleteOrderButton;
 	
+	public ManageNarudzbenicaPanel(Narudzbenica order, CenterPanel centerPanel) {
 
-	public NarudzbenicaFrame(Narudzbenica order, CenterPanel centerPanel) {
-
+		super();
 		this.order = order;
 		this.centerPanel = centerPanel;
-
 		this.order.addObserver(this);
-
 		this.setLayout(new MigLayout("fill"));
 
-		JLabel nl = new JLabel("Broj narudzbenice: ");
-		nl.setSize(minw_l, minh_l);
-		nl.setMinimumSize(nl.getSize());
-		this.add(nl, "al center, pushx, split2");
+		JLabel onl = new JLabel("Broj narudzbenice: ");
+		onl.setSize(minw_l, minh_l);
+		onl.setMinimumSize(onl.getSize());
+		this.add(onl, "al center, pushx, split2");
 		
-		JTextField ntf = new JTextField();
-		ntf.setText(order.getBroj() + "");
-		ntf.setEditable(false);
-		ntf.setSize(minw_tf, minh_tf);
-		ntf.setMinimumSize(ntf.getSize());
-		this.add(ntf, "al center, pushx, wrap");
+		JTextField ontf = new JTextField();
+		ontf.setText(order.getBroj() + "");
+		ontf.setEditable(false);
+		ontf.setSize(minw_tf, minh_tf);
+		ontf.setMinimumSize(ontf.getSize());
+		this.add(ontf, "al center, pushx, wrap");
 
 		JLabel pnl = new JLabel("Ukupan broj artikala: ");
 		pnl.setSize(minw_l, minh_l);
 		pnl.setMinimumSize(pnl.getSize());
 		this.add(pnl, "al center, pushx, split2");
 		
-		productsNumber = new JTextField();
-		productsNumber.setText(order.getBrojArtikala() + "");
-		productsNumber.setEditable(false);
-		productsNumber.setSize(minw_tf, minh_tf);
-		productsNumber.setMinimumSize(productsNumber.getSize());
-		this.add(productsNumber, "al center, pushx, wrap");
+		this.productsNumber = new JTextField();
+		this.productsNumber.setText(order.getBrojArtikala() + "");
+		this.productsNumber.setEditable(false);
+		this.productsNumber.setSize(minw_tf, minh_tf);
+		this.productsNumber.setMinimumSize(productsNumber.getSize());
+		this.add(this.productsNumber, "al center, pushx, wrap");
 		
-		JLabel cnl = new JLabel("Ukupana cena: ");
-		cnl.setSize(minw_l, minh_l);
-		cnl.setMinimumSize(cnl.getSize());
-		this.add(cnl, "al center, pushx, split2");
+		JLabel tpl = new JLabel("Ukupana cena: ");
+		tpl.setSize(minw_l, minh_l);
+		tpl.setMinimumSize(tpl.getSize());
+		this.add(tpl, "al center, pushx, split2");
 		
-		totalPrice = new JTextField();
-		totalPrice.setText(order.getUkupnaCenaNarudzbenice() + "");
-		totalPrice.setEditable(false);
-		totalPrice.setSize(minw_tf, minh_tf);
-		totalPrice.setMinimumSize(totalPrice.getSize());
+		this.totalPrice = new JTextField();
+		this.totalPrice.setText(order.getUkupnaCenaNarudzbenice() + "");
+		this.totalPrice.setEditable(false);
+		this.totalPrice.setSize(minw_tf, minh_tf);
+		this.totalPrice.setMinimumSize(totalPrice.getSize());
 		this.add(this.totalPrice, "al center, pushx, wrap");
 		
 		JLabel al = new JLabel("Adresa isporuke: ");
@@ -98,16 +95,16 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 		atf.setMinimumSize(atf.getSize());
 		this.add(atf, "al center, pushx, wrap");
 		
-		JLabel sl = new JLabel("Stanje narudzbenice: ");
-		sl.setSize(minw_l, minh_l);
-		sl.setMinimumSize(sl.getSize());
-		this.add(sl, "al center, pushx, split2");
+		JLabel osl = new JLabel("Stanje narudzbenice: ");
+		osl.setSize(minw_l, minh_l);
+		osl.setMinimumSize(osl.getSize());
+		this.add(osl, "al center, pushx, split2");
 		
-		stateName = new JTextField();
-		stateName.setText(order.getStanje().getClass().getSimpleName() + "");
-		stateName.setEditable(false);
-		stateName.setSize(minw_tf, minh_tf);
-		stateName.setMinimumSize(stateName.getSize());
+		this.stateName = new JTextField();
+		this.stateName.setText(order.getStanje().getClass().getSimpleName() + "");
+		this.stateName.setEditable(false);
+		this.stateName.setSize(minw_tf, minh_tf);
+		this.stateName.setMinimumSize(stateName.getSize());
 		this.add(this.stateName, "al center, pushx, wrap");
 
 		this.addProductButton = new JButton("Dodaj artikal");
@@ -130,23 +127,19 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			this.addProductButton.setEnabled(false);
 			this.removeProductButton.setEnabled(false);
 			this.finishButton.setEnabled(false);
-
 			break;
-		case "Naruceno":
+		case "Kupljeno":
 			this.addProductButton.setEnabled(false);
 			this.removeProductButton.setEnabled(false);
 			this.finishButton.setEnabled(false);
 			this.buyButton.setEnabled(false);
-			System.out.println(this.deleteOrderButton);
 			this.deleteOrderButton.setEnabled(false);
-
 			break;
 		default:
 			this.buyButton.setEnabled(false);
 			if (this.order.getBrojArtikala() == 0) {
 				this.removeProductButton.setEnabled(false);
 				this.finishButton.setEnabled(false);
-
 			}
 		}
 
@@ -156,15 +149,16 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame temp = new JFrame();
-				
+				temp.setSize(550, 550);
+				temp.setLocationRelativeTo(null);
+				temp.setLayout(new BorderLayout());
+
 				JPanel sviArtikli = new JPanel(new MigLayout("gap 5px 10px"));
 				JScrollPane scrollSviArtikli = new JScrollPane(sviArtikli);
-				
 				scrollSviArtikli.getVerticalScrollBar().setUnitIncrement(10);
 				scrollSviArtikli.getHorizontalScrollBar().setUnitIncrement(10);
 				
 				int brojac = 0;
-
 				for (Artikal a : centerPanel.getWebShop().getArtikli()) {
 					if (brojac == 1) {
 						sviArtikli.add(new BuyArtikalPanel(a, order), "al center, pushx, split 2, wrap");
@@ -176,13 +170,9 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 					++brojac;
 				}
 				
-				temp.setLayout(new BorderLayout());
-				temp.setSize(550, 550);
-				temp.setLocationRelativeTo(null);
-
 				temp.add(scrollSviArtikli, BorderLayout.CENTER);
-				
 				temp.setVisible(true);
+				
 			}
 		});
 
@@ -192,33 +182,30 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JFrame temp = new JFrame();
-				
+				temp.setSize(550, 550);
+				temp.setLocationRelativeTo(null);
+				temp.setLayout(new BorderLayout());
+
 				JPanel sveStavke = new JPanel(new MigLayout("gap 5px 10px"));
 				JScrollPane scrollSveStavke = new JScrollPane(sveStavke);
-				
 				scrollSveStavke.getVerticalScrollBar().setUnitIncrement(10);
 				scrollSveStavke.getHorizontalScrollBar().setUnitIncrement(10);
 				
 				int brojac = 0;
-
 				for (StavkaNarudzbenice sn : order.getStavke()) {
 					if (brojac == 1) {
-						sveStavke.add(new StavkaNarudbenicePanel(order, sn), "al center, pushx, split 2, wrap");
+						sveStavke.add(new StavkaNarudzbenicePanel(order, sn), "al center, pushx, split 2, wrap");
 						brojac = 0;
 						continue;
 					} else {
-						sveStavke.add(new StavkaNarudbenicePanel(order, sn), "al center, pushx, split 2");
+						sveStavke.add(new StavkaNarudzbenicePanel(order, sn), "al center, pushx, split 2");
 					}
 					++brojac;
 				}
 				
-				temp.setLayout(new BorderLayout());
-				temp.setSize(550, 550);
-				temp.setLocationRelativeTo(null);
-
 				temp.add(scrollSveStavke, BorderLayout.CENTER);
-				
 				temp.setVisible(true);
+				
 			}
 		});
 
@@ -237,7 +224,6 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				order.obavljenoPlacanje();
-				// dodaj dijalog za unos para itd...
 			}
 		});
 
@@ -248,12 +234,8 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 				// TODO Auto-generated method stub
 				int dialogButton = JOptionPane.YES_NO_OPTION;
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?","Upozorenje",dialogButton);
-				
 				if(dialogResult == JOptionPane.YES_OPTION){
-					Kupac customer = centerPanel.getCurrentUser().getKupac();
-					customer.removeNarudzbenice(order);
-					centerPanel.getWebShop().removeNarudzbenice(order);
-					// JEL OVO OK???????
+					centerPanel.getWebShop().obrisiNarudzbenicu(order);
 					centerPanel.setOrdersPanel();
 				}
 			}
@@ -289,7 +271,6 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 				break;
 			default:
 				this.deleteOrderButton.setEnabled(false);
-
 			}
 		} else if (arg instanceof String) {
 			this.stateName.setText((String) arg);
@@ -301,6 +282,7 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 		}
 
 		this.centerPanel.refresh();
+		
 	}
 
 }

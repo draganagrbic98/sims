@@ -450,8 +450,10 @@ public class WebShop implements Serializable {
 		if (oldNarudzbenica == null)
 			return;
 		if (this.narudzbenice != null)
-			if (this.narudzbenice.contains(oldNarudzbenica))
+			if (this.narudzbenice.contains(oldNarudzbenica)) {
 				this.narudzbenice.remove(oldNarudzbenica);
+				oldNarudzbenica.getKupac().removeNarudzbenice(oldNarudzbenica);
+			}
 	}
 
 	/** @pdGenerated default removeAll */
@@ -683,10 +685,10 @@ public class WebShop implements Serializable {
 		for (Artikal a : this.artikli) {
 			// dodaj proveru da li postoji cenovnik
 
-			if (a.getCena() == null) {
+			if (a.getStavkaCenovnika() == null) {
 				artikli.add(a);
 				System.out.println("Lele, nema artikli!");
-			} else if (a.getCena().getCenovnik().getBroj() != this.brojCenovnika)
+			} else if (a.getStavkaCenovnika().getCenovnik().getBroj() != this.brojCenovnika)
 				artikli.add(a);
 		}
 		return artikli;
@@ -724,7 +726,7 @@ public class WebShop implements Serializable {
 	   
 	   public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
 		   this.narudzbenice.remove(narudzbenica);
-		   
+		   narudzbenica.getKupac().obrisiNarudzbenicu(narudzbenica);
 	   }
 	
 }

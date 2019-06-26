@@ -6,15 +6,14 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Korisnik;
 
-public class ManagerModel extends AbstractTableModel {
+public class MenadzerModel extends AbstractTableModel {
 
 	private String[] columnNames = { "Korisnicko ime", "Lozinka" };
-
 	private List<Korisnik> managers;
 
-	public ManagerModel(List<Korisnik> menadzeri) {
+	public MenadzerModel(List<Korisnik> managers) {
 		super();
-		this.managers = menadzeri;
+		this.managers = managers;
 	}
 
 	@Override
@@ -32,10 +31,10 @@ public class ManagerModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		Korisnik k = this.managers.get(rowIndex);
+		Korisnik user = this.managers.get(rowIndex);
 		if (columnIndex == 0)
-			return k.getKorisnickoIme();
-		return k.getLozinka();
+			return user.getKorisnickoIme();
+		return user.getLozinka();
 	}
 
 	@Override

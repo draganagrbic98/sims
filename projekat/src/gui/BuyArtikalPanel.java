@@ -13,19 +13,18 @@ import model.Artikal;
 import model.Narudzbenica;
 import net.miginfocom.swing.MigLayout;
 
-public class BuyArtikalPanel extends JPanel{
+public class BuyArtikalPanel extends JPanel {
 
 	private Artikal artikal;
-
-	private Narudzbenica order;
+	private Narudzbenica narudzbenica;
 	
-	public BuyArtikalPanel(Artikal artikal, Narudzbenica order) {
+	public BuyArtikalPanel(Artikal artikal, Narudzbenica narudzbenica) {
+		
 		super();
 		this.artikal = artikal;
-		this.order = order;
+		this.narudzbenica = narudzbenica;
 		
 		this.setLayout(new MigLayout("fill"));
-
 		this.setSize(250, 150);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
@@ -34,26 +33,21 @@ public class BuyArtikalPanel extends JPanel{
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 		this.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
 		
-		JLabel nl = new JLabel("Naziv artikla: " + this.artikal.getNaziv());
-		this.add(nl, "al center, wrap");
+		JLabel pnl = new JLabel("Naziv artikla: " + this.artikal.getNaziv());
+		this.add(pnl, "al center, wrap");
 		
-		JButton ab = new JButton("Dodaj");
-		this.add(ab, "al center, wrap");
+		JButton apb = new JButton("Dodaj");
+		this.add(apb, "al center, wrap");
 		
-		ab.addActionListener(new ActionListener() {
+		apb.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				order.dodajStavku(artikal);
+				narudzbenica.dodajStavku(artikal);
 			}
 		});
 		
-		
-		
-		
 	}
-	
-	
 	
 }

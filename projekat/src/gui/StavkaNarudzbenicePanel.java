@@ -14,18 +14,18 @@ import model.Narudzbenica;
 import model.StavkaNarudzbenice;
 import net.miginfocom.swing.MigLayout;
 
-public class StavkaNarudbenicePanel extends JPanel {
+public class StavkaNarudzbenicePanel extends JPanel {
 
-	private Narudzbenica order;
+	private Narudzbenica narudzbenica;
 	private StavkaNarudzbenice stavka;
 
-	public StavkaNarudbenicePanel(Narudzbenica order, StavkaNarudzbenice stavka) {
+	public StavkaNarudzbenicePanel(Narudzbenica narudzbenica, StavkaNarudzbenice stavka) {
+		
 		super();
-		this.order = order;
+		this.narudzbenica = narudzbenica;
 		this.stavka = stavka;
 
 		this.setLayout(new MigLayout("fill"));
-
 		this.setSize(250, 150);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
@@ -53,7 +53,7 @@ public class StavkaNarudbenicePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				order.obrisiStavku(stavka);
+				narudzbenica.obrisiStavku(stavka);
 			}
 		});
 

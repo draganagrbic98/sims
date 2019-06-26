@@ -174,6 +174,14 @@ public class Kupac implements Serializable {
 		if (preporuke != null)
 			preporuke.clear();
 	}
+	
+	public void dodajNarudzbenicu(Narudzbenica narudzbenica) {
+		this.narudzbenice.add(narudzbenica);
+	}
+	
+	public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
+		this.narudzbenice.remove(narudzbenica);
+	}
 
 	public String getIme() {
 		return ime;

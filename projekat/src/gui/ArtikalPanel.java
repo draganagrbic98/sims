@@ -25,11 +25,12 @@ public class ArtikalPanel extends JPanel {
 	private CenterPanel centerPanel;
 
 	public ArtikalPanel(Artikal artikal, CenterPanel centerPanel) {
-
+		
+		super();
 		this.artikal = artikal;
 		this.centerPanel = centerPanel;
+		
 		this.setLayout(new MigLayout("fill"));
-
 		this.setSize(370, 500);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
@@ -37,7 +38,6 @@ public class ArtikalPanel extends JPanel {
 		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 		this.setBorder(BorderFactory.createCompoundBorder(raisedbevel, loweredbevel));
-
 		BufferedImage art_pic = null;
 
 		try {
@@ -51,14 +51,14 @@ public class ArtikalPanel extends JPanel {
 		JLabel picLabel = new JLabel(new ImageIcon(art_pic_scaled));
 		this.add(picLabel, "al left, top, wrap");
 
-		JLabel al = new JLabel(this.artikal.getNaziv());
-		al.setFont(new Font("Times New Roman", Font.PLAIN, 27));
-		this.add(al, "al center, wrap");
+		JLabel pnl = new JLabel(this.artikal.getNaziv());
+		pnl.setFont(new Font("Times New Roman", Font.PLAIN, 27));
+		this.add(pnl, "al center, wrap");
 
-		JButton ob = new JButton("Vise informacija");
-		this.add(ob, "al center, wrap");
+		JButton mib = new JButton("Vise informacija");
+		this.add(mib, "al center, wrap");
 
-		ob.addActionListener(new ActionListener() {
+		mib.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

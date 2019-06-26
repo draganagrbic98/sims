@@ -13,32 +13,31 @@ import javax.swing.JScrollPane;
 
 import model.WebShop;
 
-public class MainWindow extends JFrame {
-	private WebShop webShop;
-	private CenterPanel centerPanel; // mozda ne mora da ima referencu ni na ovo
-	private NorthPanel northPanel;// mozda ne mora da ima referencu ni na ovo
+public class MainFrame extends JFrame {
 
-	public MainWindow(WebShop webShop) {
+	private NorthPanel northPanel;
+	private CenterPanel centerPanel; 
+
+	public MainFrame(WebShop webShop) {
+		
 		super();
 		this.centerPanel = new CenterPanel(webShop);
-		this.webShop = webShop;
+		this.northPanel = this.centerPanel.getNorthPanel();
 
-		this.setTitle("WebShop");
+		this.setTitle("Web Shop");
 		this.setSize(1024, 768);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setLayout(new BorderLayout());
 
 		JScrollPane scrollCenterPanel = new JScrollPane(this.centerPanel);
-		
 		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
 		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
 
-		this.add(this.centerPanel.getNorthPanel(), BorderLayout.NORTH);
+		this.add(this.northPanel, BorderLayout.NORTH);
 		this.add(scrollCenterPanel, BorderLayout.CENTER);
 
 		this.centerPanel.setWelcomeMessage();
-		this.northPanel = this.centerPanel.getNorthPanel();
 		this.northPanel.setUserPanel();
 
 		this.addWindowListener(new WindowListener() {
@@ -66,13 +65,11 @@ public class MainWindow extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				// TODO Auto-generated method stub
-				ObjectOutputStream out;
 				try {
-					out = new ObjectOutputStream(new FileOutputStream("out"));
+					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
 					out.writeObject(webShop);
 					out.flush();
 					out.close();
-					System.out.println(webShop.getKorisnici().size());
 					setVisible(false);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
@@ -92,6 +89,7 @@ public class MainWindow extends JFrame {
 			public void windowActivated(WindowEvent e) {
 				// TODO Auto-generated method stub
 			}
+			
 		});
 	}
 }

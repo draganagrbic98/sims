@@ -1,6 +1,5 @@
 package gui;
 
-//import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,9 +14,11 @@ public class NorthPanel extends JPanel {
 	private CenterPanel centerPanel;
 
 	public NorthPanel(CenterPanel centerPanel) {
+		
 		super();
-		this.setLayout(new MigLayout("fill"));
 		this.centerPanel = centerPanel;
+		this.setLayout(new MigLayout("fill"));
+		
 	}
 
 	private void refresh() {
@@ -30,12 +31,12 @@ public class NorthPanel extends JPanel {
 	private void setDefault() {
 
 		this.removeAll();
+		
 		JLabel sl = new JLabel("Pretraga: ");
 		JTextField stf = new JTextField();
-		JButton pb = new JButton("Artikli");
 		stf.setSize(200, 25);
 		stf.setMinimumSize(stf.getSize());
-
+		JButton pb = new JButton("Artikli");
 		pb.setSize(100, 25);
 		pb.setMinimumSize(pb.getSize());
 
@@ -68,6 +69,7 @@ public class NorthPanel extends JPanel {
 	public void setUserPanel() {
 
 		this.setDefault();
+		
 		JButton sub = new JButton("Registracija");
 		JButton sib = new JButton("Prijava");
 		this.add(sub, "al right, pushx");
@@ -99,6 +101,7 @@ public class NorthPanel extends JPanel {
 
 		JButton sob = new JButton("Odjava");
 		this.add(sob, "al right, pushx");
+		
 		sob.addActionListener(new ActionListener() {
 
 			@Override
@@ -151,7 +154,6 @@ public class NorthPanel extends JPanel {
 		});
 
 		this.addSignOutButton();
-
 		this.refresh();
 	}
 
@@ -161,7 +163,6 @@ public class NorthPanel extends JPanel {
 
 		JButton cp = new JButton("Kreiraj artikal");
 		this.add(cp, "gapx 25px");
-
 		cp.addActionListener(new ActionListener() {
 
 			@Override
@@ -205,7 +206,6 @@ public class NorthPanel extends JPanel {
 		});
 
 		this.addSignOutButton();
-
 		this.refresh();
 	}
 
@@ -215,7 +215,6 @@ public class NorthPanel extends JPanel {
 
 		JButton ob = new JButton("Narudzbenice");
 		this.add(ob);
-
 		ob.addActionListener(new ActionListener() {
 
 			@Override
@@ -225,28 +224,8 @@ public class NorthPanel extends JPanel {
 			}
 		});
 
-		/*
-		 * JButton bab = new JButton("Korpa"); this.add(bab); bab.addActionListener(new
-		 * ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
-		 * method stub centerPanel.setBusketPanel(); } });
-		 * 
-		 * JButton bob = new JButton("Kupljeno"); this.add(bob);
-		 * bob.addActionListener(new ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
-		 * method stub centerPanel.setBoughtPanel(); } });
-		 * 
-		 * JButton co = new JButton("Kreiraj narudzbenicu"); this.add(co);
-		 * co.addActionListener(new ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) { // TODO Auto-generated
-		 * method stub centerPanel.setCreateOrderPanel(); } });
-		 */
-
 		this.addSignOutButton();
-
 		this.refresh();
+		
 	}
 }

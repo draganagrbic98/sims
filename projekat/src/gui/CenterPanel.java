@@ -34,46 +34,29 @@ import model.enumi.Uloga;
 import net.miginfocom.swing.MigLayout;
 
 public class CenterPanel extends JPanel {
+	
 	private static int minw_l = 100;
 	private static int minh_l = 25;
 	private static int minw_tf = 200;
 	private static int minh_tf = 25;
+	
 	private NorthPanel northPanel;
 	private WebShop webShop;
 	private Korisnik currentUser;
 
-	public Korisnik getCurrentUser() {
-		return currentUser;
-	}
-
-	public WebShop getWebShop() {
-		return webShop;
-	}
-
-	public void setWebShop(WebShop webShop) {
+	public CenterPanel(WebShop webShop) {
+		
+		super();
+		this.northPanel = new NorthPanel(this);
 		this.webShop = webShop;
+		
 	}
 
 	public void refresh() {
 
 		this.revalidate();
 		this.repaint();
-		// public da bi ga zvao narudbenica frame
 
-	}
-
-	public NorthPanel getNorthPanel() {
-		return northPanel;
-	}
-
-	public void setNorthPanel(NorthPanel northPanel) {
-		this.northPanel = northPanel;
-	}
-
-	public CenterPanel(WebShop webShop) {
-		super();
-		this.webShop = webShop;
-		this.northPanel = new NorthPanel(this);
 	}
 
 	private void setDefault() {
@@ -86,8 +69,8 @@ public class CenterPanel extends JPanel {
 	public void setWelcomeMessage() {
 
 		this.setDefault();
+		
 		BufferedImage main_pic = null;
-
 		try {
 			main_pic = ImageIO.read(new File("main_img.png"));
 		} catch (IOException e) {
@@ -97,6 +80,7 @@ public class CenterPanel extends JPanel {
 
 		JLabel picLabel = new JLabel(new ImageIcon(main_pic));
 		this.add(picLabel, "left, push, grow");
+		
 		this.refresh();
 
 	}
@@ -104,8 +88,8 @@ public class CenterPanel extends JPanel {
 	private void setSignedUpMessage() {
 
 		this.setDefault();
+		
 		BufferedImage logon_pic = null;
-
 		try {
 			logon_pic = ImageIO.read(new File("logon_img.png"));
 		} catch (IOException e) {
@@ -115,32 +99,16 @@ public class CenterPanel extends JPanel {
 
 		JLabel picLabel = new JLabel(new ImageIcon(logon_pic));
 		this.add(picLabel, "left, push, grow");
-		this.refresh();
-
-	}
-
-	public void setOrder(Narudzbenica order) {
-
-		// OVO OVDE URADIIIIIIIIIIII
-
-		this.setDefault();
-
-		NarudzbenicaFrame nf = new NarudzbenicaFrame(order, this);
-		System.out.println(order);
-		this.add(nf, "growx, growy");
-
+		
 		this.refresh();
 
 	}
 
 	public void setProduct(Artikal product) {
 
-		// ovde ces sve o artiklu da napises...
-
 		this.setDefault();
 
 		BufferedImage art_pic = null;
-
 		try {
 			art_pic = ImageIO.read(new File("art_default_img.png"));
 		} catch (IOException e) {
@@ -151,41 +119,41 @@ public class CenterPanel extends JPanel {
 		JLabel picLabel = new JLabel(new ImageIcon(art_pic));
 		this.add(picLabel, "pushx, growx, wrap");
 
-		JLabel anl = new JLabel("Naziv: ");
-		anl.setSize(minw_l, minh_l);
-		anl.setMinimumSize(anl.getSize());
-		this.add(anl, "al center, pushx, split2");
+		JLabel pnl = new JLabel("Naziv: ");
+		pnl.setSize(minw_l, minh_l);
+		pnl.setMinimumSize(pnl.getSize());
+		this.add(pnl, "al center, pushx, split2");
 
-		JTextField atf = new JTextField();
-		atf.setText(product.getNaziv());
-		atf.setEditable(false);
-		atf.setSize(minw_tf, minh_tf);
-		atf.setMinimumSize(atf.getSize());
-		this.add(atf, "al center, pushx, wrap");
+		JTextField pntf = new JTextField();
+		pntf.setText(product.getNaziv());
+		pntf.setEditable(false);
+		pntf.setSize(minw_tf, minh_tf);
+		pntf.setMinimumSize(pntf.getSize());
+		this.add(pntf, "al center, pushx, wrap");
 
-		JLabel dl = new JLabel("Opis: ");
-		dl.setSize(minw_l, minh_l);
-		dl.setMinimumSize(dl.getSize());
-		this.add(dl, "al center, pushx, split2");
+		JLabel pdl = new JLabel("Opis: ");
+		pdl.setSize(minw_l, minh_l);
+		pdl.setMinimumSize(pdl.getSize());
+		this.add(pdl, "al center, pushx, split2");
 
-		JTextField dtf = new JTextField();
-		dtf.setText(product.getOpis());
-		dtf.setEditable(false);
-		dtf.setSize(minw_tf, minh_tf);
-		dtf.setMinimumSize(dtf.getSize());
-		this.add(dtf, "al center, pushx, wrap");
+		JTextField pdtf = new JTextField();
+		pdtf.setText(product.getOpis());
+		pdtf.setEditable(false);
+		pdtf.setSize(minw_tf, minh_tf);
+		pdtf.setMinimumSize(pdtf.getSize());
+		this.add(pdtf, "al center, pushx, wrap");
 
-		JLabel pl = new JLabel("Cena: ");
-		pl.setSize(minw_l, minh_l);
-		pl.setMinimumSize(pl.getSize());
-		this.add(pl, "al center, pushx, split2");
+		JLabel ppl = new JLabel("Cena: ");
+		ppl.setSize(minw_l, minh_l);
+		ppl.setMinimumSize(ppl.getSize());
+		this.add(ppl, "al center, pushx, split2");
 
-		JTextField ptf = new JTextField();
-		ptf.setText(product.getCena() == null ? "nema" : product.getCena().getCena() + "");
-		ptf.setEditable(false);
-		ptf.setSize(minw_tf, minh_tf);
-		ptf.setMinimumSize(ptf.getSize());
-		this.add(ptf, "al center, pushx, wrap");
+		JTextField pptf = new JTextField();
+		pptf.setText(product.getCena() + "");
+		pptf.setEditable(false);
+		pptf.setSize(minw_tf, minh_tf);
+		pptf.setMinimumSize(pptf.getSize());
+		this.add(pptf, "al center, pushx, wrap");
 
 		this.refresh();
 
@@ -195,17 +163,15 @@ public class CenterPanel extends JPanel {
 
 		if (products.isEmpty()) {
 			this.setDefault();
-			this.add(new JLabel("Nema artikala!"), "align center, wrap");
+			this.add(new JLabel("NEMA ARTIKALA!"), "align center, wrap");
 			this.refresh();
 			return;
 		}
 
 		this.removeAll();
-
 		this.setLayout(new MigLayout("gap 5px 10px"));
 
 		int brojac = 0;
-
 		for (Artikal a : products) {
 			if (brojac == 1) {
 				this.add(new ArtikalPanel(a, this), "al center, pushx, split 2, wrap");
@@ -236,7 +202,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage reg_pic = null;
-
 		try {
 			reg_pic = ImageIO.read(new File("reg_img.png"));
 		} catch (IOException e) {
@@ -257,15 +222,15 @@ public class CenterPanel extends JPanel {
 		ntf.setMinimumSize(ntf.getSize());
 		this.add(ntf, "al center, pushx, wrap");
 
-		JLabel sl = new JLabel("Prezime");
-		sl.setSize(minw_l, minh_l);
-		sl.setMinimumSize(sl.getSize());
-		this.add(sl, "al center, pushx, split2");
+		JLabel snl = new JLabel("Prezime: ");
+		snl.setSize(minw_l, minh_l);
+		snl.setMinimumSize(snl.getSize());
+		this.add(snl, "al center, pushx, split2");
 
-		JTextField stf = new JTextField();
-		stf.setSize(minw_tf, minh_tf);
-		stf.setMinimumSize(stf.getSize());
-		this.add(stf, "al center, pushx, wrap");
+		JTextField sntf = new JTextField();
+		sntf.setSize(minw_tf, minh_tf);
+		sntf.setMinimumSize(sntf.getSize());
+		this.add(sntf, "al center, pushx, wrap");
 
 		JLabel el = new JLabel("Email: ");
 		el.setSize(minw_l, minh_l);
@@ -326,7 +291,7 @@ public class CenterPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 
-				if (emptyTextField(ntf, stf, etf, atf, untf, pstf, ptf))
+				if (emptyTextField(ntf, sntf, etf, atf, untf, pstf, ptf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 
@@ -335,12 +300,10 @@ public class CenterPanel extends JPanel {
 							JOptionPane.ERROR_MESSAGE);
 
 				else {
+					
 					webShop.dodajKorisnika(untf.getText(), pstf.getText(), Uloga.kupac, new Kupac(ntf.getText(),
-							stf.getText(), etf.getText(), atf.getText(), new Mesto(ptf.getText())));
-
-					logIn(Uloga.kupac);
-					currentUser = webShop.nadjiKorisnika(untf.getText());
-					System.out.println(currentUser.getKorisnickoIme());
+							sntf.getText(), etf.getText(), atf.getText(), new Mesto(ptf.getText())));
+					logIn(webShop.nadjiKorisnika(untf.getText()));
 
 				}
 
@@ -351,28 +314,11 @@ public class CenterPanel extends JPanel {
 
 	}
 
-	private void logIn(Uloga uloga) {
-
-		switch (uloga) {
-		case administrator:
-			northPanel.setAdministratorPanel();
-			break;
-		case menadzer:
-			northPanel.setManagerPanel();
-			break;
-		default:
-			northPanel.setCustomerPanel();
-		}
-		setSignedUpMessage();
-
-	}
-
 	public void setSignInPanel() {
 
 		this.setDefault();
 
 		BufferedImage login_pic = null;
-
 		try {
 			login_pic = ImageIO.read(new File("login_img.png"));
 		} catch (IOException e) {
@@ -420,12 +366,8 @@ public class CenterPanel extends JPanel {
 					if (k == null)
 						JOptionPane.showMessageDialog(null, "Nepostojec korisnik!", "Greska",
 								JOptionPane.ERROR_MESSAGE);
-					else {
-						logIn(k.getUloga());
-						currentUser = webShop.nadjiKorisnika(untf.getText());
-						System.out.println(currentUser.getKorisnickoIme());
-
-					}
+					else 
+						logIn(k);
 				}
 
 			}
@@ -434,13 +376,29 @@ public class CenterPanel extends JPanel {
 		this.refresh();
 
 	}
+	
+	private void logIn(Korisnik user) {
+
+		this.currentUser = user;
+		switch (this.currentUser.getUloga()) {
+		case administrator:
+			northPanel.setAdministratorPanel();
+			break;
+		case menadzer:
+			northPanel.setManagerPanel();
+			break;
+		default:
+			northPanel.setCustomerPanel();
+		}
+		this.setSignedUpMessage();
+
+	}
 
 	public void setManagersPanel() {
 
 		this.removeAll();
 		this.setLayout(new BorderLayout());
-
-		JTable table = new JTable(new ManagerModel(this.webShop.getMenadzeri()));
+		JTable table = new JTable(new MenadzerModel(this.webShop.getMenadzeri()));
 		table.setAutoCreateRowSorter(true);
 		JScrollPane sp = new JScrollPane(table);
 		this.add(sp);
@@ -453,7 +411,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage men_add_pic = null;
-
 		try {
 			men_add_pic = ImageIO.read(new File("men_add_img.png"));
 		} catch (IOException e) {
@@ -502,9 +459,7 @@ public class CenterPanel extends JPanel {
 
 				else {
 					webShop.dodajKorisnika(untf.getText(), pstf.getText(), Uloga.menadzer);
-
 					JOptionPane.showMessageDialog(null, "Menadzer kreiran", "", JOptionPane.INFORMATION_MESSAGE);
-
 				}
 			}
 		});
@@ -518,7 +473,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage men_del_pic = null;
-
 		try {
 			men_del_pic = ImageIO.read(new File("men_del_img.png"));
 		} catch (IOException e) {
@@ -539,10 +493,10 @@ public class CenterPanel extends JPanel {
 		untf.setMinimumSize(untf.getSize());
 		this.add(untf, "al center, pushx, wrap");
 
-		JButton cmb = new JButton("Obrisi menadzera");
-		this.add(cmb, "al center, pushx, wrap");
+		JButton dmb = new JButton("Obrisi menadzera");
+		this.add(dmb, "al center, pushx, wrap");
 
-		cmb.addActionListener(new ActionListener() {
+		dmb.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -558,7 +512,6 @@ public class CenterPanel extends JPanel {
 					else {
 						webShop.obrisiKorisnika(untf.getText());
 						JOptionPane.showMessageDialog(null, "Menadzer obrisan", "", JOptionPane.INFORMATION_MESSAGE);
-
 					}
 				}
 			}
@@ -573,7 +526,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage art_add_pic = null;
-
 		try {
 			art_add_pic = ImageIO.read(new File("art_add_img.png"));
 		} catch (IOException e) {
@@ -617,8 +569,6 @@ public class CenterPanel extends JPanel {
 		JButton cpb = new JButton("Kreiraj artikal");
 		this.add(cpb, "al center, pushx, wrap");
 
-		// dodaj proveru da li je unet ceo broj za sifru artikla
-
 		cpb.addActionListener(new ActionListener() {
 
 			@Override
@@ -630,12 +580,11 @@ public class CenterPanel extends JPanel {
 				else {
 					Artikal a = webShop.nadjiArtikal(ctf.getText());
 					if (a != null)
-						JOptionPane.showMessageDialog(null, "Artikal vec postoji!", "Greska",
+						JOptionPane.showMessageDialog(null, "Unet artikal vec postoji!", "Greska",
 								JOptionPane.ERROR_MESSAGE);
 					else {
 						webShop.dodajArtikal(ctf.getText(), ntf.getText(), dtf.getText());
-						JOptionPane.showMessageDialog(null, "Artikal kreiran!", "", JOptionPane.INFORMATION_MESSAGE);
-
+						JOptionPane.showMessageDialog(null, "Artikal kreiran", "", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
@@ -650,7 +599,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage art_del_pic = null;
-
 		try {
 			art_del_pic = ImageIO.read(new File("art_del_img.png"));
 		} catch (IOException e) {
@@ -683,72 +631,17 @@ public class CenterPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 				else {
-					// dodaj da proverava da li je unet ceo broj za sifru artikla
 					Artikal a = webShop.nadjiArtikal(ctf.getText());
 					if (a == null)
 						JOptionPane.showMessageDialog(null, "Unet artikal ne postoji!", "Greska",
 								JOptionPane.ERROR_MESSAGE);
 					else {
-						// u modelu pre brisanja artikla mi fale sve metode
 						webShop.obrisiArtikal(ctf.getText());
-						JOptionPane.showMessageDialog(null, "Artikal obrisan!", "", JOptionPane.INFORMATION_MESSAGE);
-
+						JOptionPane.showMessageDialog(null, "Artikal obrisan", "", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
 		});
-
-		this.refresh();
-
-	}
-
-	public void setAddPricePanel() {
-
-		this.setDefault();
-
-		if (webShop.getCenovnici().isEmpty()) {
-			this.add(new JLabel("Nema cenovnika!"), "al center, wrap");
-			this.refresh();
-			return;
-
-		}
-
-		BufferedImage cen_art_add_pic = null;
-
-		try {
-			cen_art_add_pic = ImageIO.read(new File("cen_art_add_img.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		JLabel picLabel = new JLabel(new ImageIcon(cen_art_add_pic));
-		this.add(picLabel, "pushx, growx, wrap");
-
-		String[] array = new String[this.webShop.artikliSaStaromCenom().size()];
-
-		int i = 0;
-		for (Artikal a : this.webShop.artikliSaStaromCenom())
-			array[i++] = a.getSifra() + "";
-
-		JLabel cbl = new JLabel("Izaberite artikal: ");
-		cbl.setSize(minw_l, minh_l);
-		cbl.setMinimumSize(cbl.getSize());
-		this.add(cbl, "al center, pushx, split2");
-
-		JComboBox<String> cb = new JComboBox<String>(array);
-		cb.setSize(minw_tf, minh_tf);
-		cb.setMinimumSize(cb.getSize());
-		cb.setMaximumSize(new Dimension(minw_tf * 2, minh_tf));
-		this.add(cb, "al center, pushx, wrap");
-
-		// dodaj da se ne moze dodati cena ako ne postoji cenovnik
-		Cenovnik cenovnik = this.webShop.getCenovnik();
-		Collection<StavkaCenovnika> stavke = new ArrayList<>();
-
-		this.setPricePanel(cb, stavke, cenovnik);
-
-		cenovnik.dodajStavke(stavke);
 
 		this.refresh();
 
@@ -768,7 +661,6 @@ public class CenterPanel extends JPanel {
 		this.add(ctf, "al center, pushx, wrap");
 
 		JLabel pl = new JLabel("Cena: ");
-		// dodaj proveru da je unet broj
 		pl.setSize(minw_l, minh_l);
 		pl.setMinimumSize(pl.getSize());
 		this.add(pl, "al center, pushx, split2");
@@ -780,7 +672,7 @@ public class CenterPanel extends JPanel {
 
 		JButton apb = new JButton("Dodaj cenu");
 		this.add(apb, "al center, pushx, wrap");
-
+		
 		apb.addActionListener(new ActionListener() {
 
 			@Override
@@ -790,16 +682,21 @@ public class CenterPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
 				else {
-					StavkaCenovnika sc = new StavkaCenovnika(webShop.nadjiArtikal(ctf.getText()),
-							Double.parseDouble(ptf.getText()), cenovnik);
-					stavke.add(sc);
-					cb.removeItemAt(cb.getSelectedIndex());
-					JOptionPane.showMessageDialog(null, "Cena dodata!", "", JOptionPane.INFORMATION_MESSAGE);
-
+					try {
+						StavkaCenovnika sc = new StavkaCenovnika(webShop.nadjiArtikal(ctf.getText()),
+								Double.parseDouble(ptf.getText()), cenovnik);	
+						stavke.add(sc);
+						cb.removeItemAt(cb.getSelectedIndex());
+						JOptionPane.showMessageDialog(null, "Cena dodata", "", JOptionPane.INFORMATION_MESSAGE);
+					}
+					catch(Exception ee) {
+						JOptionPane.showMessageDialog(null, "Uneta cena nije broj!", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 		});
-
+		
 		cb.addActionListener(new ActionListener() {
 
 			@Override
@@ -816,7 +713,6 @@ public class CenterPanel extends JPanel {
 		this.setDefault();
 
 		BufferedImage cen_add_pic = null;
-
 		try {
 			cen_add_pic = ImageIO.read(new File("cen_add_img.png"));
 		} catch (IOException e) {
@@ -828,7 +724,6 @@ public class CenterPanel extends JPanel {
 		this.add(picLabel, "pushx, growx, wrap");
 
 		String[] array = new String[this.webShop.getArtikli().size()];
-
 		int i = 0;
 		for (Artikal a : this.webShop.getArtikli())
 			array[i++] = a.getSifra() + "";
@@ -846,7 +741,6 @@ public class CenterPanel extends JPanel {
 
 		Cenovnik cenovnik = new Cenovnik();
 		Collection<StavkaCenovnika> stavke = new ArrayList<>();
-
 		this.setPricePanel(cb, stavke, cenovnik);
 
 		JButton cplb = new JButton("Kreiraj cenovnik");
@@ -858,13 +752,69 @@ public class CenterPanel extends JPanel {
 				// TODO Auto-generated method stub
 
 				cenovnik.dodajStavke(stavke);
-
 				webShop.dodajCenovnik(cenovnik);
-				JOptionPane.showMessageDialog(null, "Cenovnik kreiran!", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Cenovnik kreiran", "", JOptionPane.INFORMATION_MESSAGE);
 				setDefault();
-				refresh(); // VAU
+				refresh(); 
+				
 			}
 		});
+
+		this.refresh();
+
+	}
+	
+	public void setAddPricePanel() {
+
+		this.setDefault();
+
+		if (webShop.getCenovnici().isEmpty()) {
+			this.add(new JLabel("NEMA CENOVNIKA!"), "al center, wrap");
+			this.refresh();
+			return;
+		}
+
+		BufferedImage cen_art_add_pic = null;
+		try {
+			cen_art_add_pic = ImageIO.read(new File("cen_art_add_img.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		JLabel picLabel = new JLabel(new ImageIcon(cen_art_add_pic));
+		this.add(picLabel, "pushx, growx, wrap");
+
+		String[] array = new String[this.webShop.artikliSaStaromCenom().size()];
+		int i = 0;
+		for (Artikal a : this.webShop.artikliSaStaromCenom())
+			array[i++] = a.getSifra();
+
+		JLabel cbl = new JLabel("Izaberite artikal: ");
+		cbl.setSize(minw_l, minh_l);
+		cbl.setMinimumSize(cbl.getSize());
+		this.add(cbl, "al center, pushx, split2");
+
+		JComboBox<String> cb = new JComboBox<String>(array);
+		cb.setSize(minw_tf, minh_tf);
+		cb.setMinimumSize(cb.getSize());
+		cb.setMaximumSize(new Dimension(minw_tf * 2, minh_tf));
+		this.add(cb, "al center, pushx, wrap");
+
+		Cenovnik cenovnik = this.webShop.getCenovnik();
+		Collection<StavkaCenovnika> stavke = new ArrayList<>();
+		this.setPricePanel(cb, stavke, cenovnik);
+		cenovnik.dodajStavke(stavke);
+		this.refresh();
+
+	}
+
+	public void setOrder(Narudzbenica order) {
+
+		this.setDefault();
+
+		ManageNarudzbenicaPanel nf = new ManageNarudzbenicaPanel(order, this);
+		this.add(nf, "growx, growy");
 
 		this.refresh();
 
@@ -872,25 +822,17 @@ public class CenterPanel extends JPanel {
 
 	public void setOrdersPanel() {
 
-		System.out.println("HURA");
-
-		// OVO JE SAMO PROBNI GUI, TREBA GA SREDITI
+		this.removeAll();
+		this.setLayout(new MigLayout("gap 5px 10px"));
+		JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
+		JScrollPane scrollCenterPanel = new JScrollPane(sveNarudzbenice);
+		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
+		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
 
 		Kupac customer = this.currentUser.getKupac();
 		Collection<Narudzbenica> orders = customer.getNarudzbenice();
 
-		this.removeAll();
-
-		this.setLayout(new MigLayout("gap 5px 10px"));
-
-		JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
-		JScrollPane scrollCenterPanel = new JScrollPane(sveNarudzbenice);
-
-		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
-		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
-
 		int brojac = 0;
-
 		for (Narudzbenica o : orders) {
 			if (brojac == 2) {
 				sveNarudzbenice.add(new NarudzbenicaPanel(o, this), "al center, pushx, split 3, wrap");
@@ -901,43 +843,32 @@ public class CenterPanel extends JPanel {
 			}
 			++brojac;
 		}
-
+		
 		JButton co = new JButton("Dodaj narudzbenicu");
 		this.add(co, "al left, top");
-
 		this.add(scrollCenterPanel, "al left, grow, push");
-
-		CenterPanel temp = this; // MORAM OVO DA NAPISEM
-
+		
 		co.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("KLIK");
 
 				Object retval = JOptionPane.showInputDialog(null, "Unesite adresu isporuke", "Adresa narudzbenice",
 						JOptionPane.QUESTION_MESSAGE, null, null, "");
-				// dodaj proveru da li je za adresu unet prazan string!!!!!!!!!! i da li je
-				// pritisnut cancel
 
 				if (retval != null) {
+					
 					String adresa = (String) retval;
-
 					if (!adresa.trim().isEmpty()) {
 						Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), new Date(), adresa,
 								customer);
-
-						webShop.dodajNarudzbenicu(order);
-						sveNarudzbenice.add(new NarudzbenicaPanel(order, temp));
-						refresh();
+						webShop.dodajNarudzbenicu(order);					
+						setOrdersPanel();
 					} else {
 						JOptionPane.showMessageDialog(null, "Nije uneta adresa!", "Greska",
 								JOptionPane.ERROR_MESSAGE);
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Nije uneta adresa!", "Greska",
-							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -945,19 +876,17 @@ public class CenterPanel extends JPanel {
 		this.refresh();
 
 	}
+	
+	public NorthPanel getNorthPanel() {
+		return northPanel;
+	}
 
-	/*
-	 * public void setBusketPanel() {
-	 * 
-	 * }
-	 * 
-	 * public void setBoughtPanel() {
-	 * 
-	 * }
-	 * 
-	 * public void setCreateOrderPanel() {
-	 * 
-	 * }
-	 */
+	public WebShop getWebShop() {
+		return webShop;
+	}
+
+	public Korisnik getCurrentUser() {
+		return currentUser;
+	}
 
 }
