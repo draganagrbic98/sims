@@ -122,6 +122,9 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 		this.buyButton = new JButton("Kupi");
 		this.add(this.buyButton, "al center, pushx, wrap, gapx 10px");
 
+		this.deleteOrderButton = new JButton("Obrisi narudzbenicu");
+		this.add(this.deleteOrderButton, "al center, pushx, wrap");
+
 		switch (this.order.getStanje().getClass().getSimpleName()) {
 		case "Zavrsetak":
 			this.addProductButton.setEnabled(false);
@@ -134,7 +137,7 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			this.removeProductButton.setEnabled(false);
 			this.finishButton.setEnabled(false);
 			this.buyButton.setEnabled(false);
-			System.out.println(this.buyButton);
+			System.out.println(this.deleteOrderButton);
 			this.deleteOrderButton.setEnabled(false);
 
 			break;
@@ -238,8 +241,6 @@ public class NarudzbenicaFrame extends JPanel implements Observer {
 			}
 		});
 
-		this.deleteOrderButton = new JButton("Obrisi narudzbenicu");
-		this.add(this.deleteOrderButton, "al center, pushx, wrap");
 		
 		this.deleteOrderButton.addActionListener(new ActionListener() {
 			@Override

@@ -18,8 +18,9 @@ public class Main {
 		/*
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
 		out.writeObject(new WebShop("WAU")); out.flush(); out.close();
-		*/
-
+		
+*/
+		
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream("out"));
 		WebShop ws = (WebShop) in.readObject();
 		in.close();
