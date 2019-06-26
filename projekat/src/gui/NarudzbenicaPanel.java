@@ -41,7 +41,7 @@ public class NarudzbenicaPanel extends JPanel {
 		pnl.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		this.add(pnl, "al center, wrap");
 		
-		JLabel tpl = new JLabel("Ukupana cena: " + this.narudzbenica.getUkupnaCenaNarudzbenice());
+		JLabel tpl = new JLabel("Ukupana cena: " + this.narudzbenica.getCena());
 		tpl.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		this.add(tpl, "al center, wrap");
 		

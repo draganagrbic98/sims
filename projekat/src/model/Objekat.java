@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /***********************************************************************
  * Module:  Objekat.java
@@ -8,135 +9,115 @@ import java.io.Serializable;
  * Purpose: Defines the Class Objekat
  ***********************************************************************/
 
-import java.util.*;
-
 import model.enumi.TipObjekta;
 
-/** @pdOid 723f5bc4-0135-429c-b97e-b21412d77f9e */
-public class Objekat implements Serializable {
-	/** @pdOid e3e192fc-2131-4f15-b4fc-6e3a5fe66f85 */
-	private String ime;
-	/** @pdOid 2ad4d4d6-4b39-48ca-8c7e-3cd41c680529 */
-	private String adresa;
-	/** @pdOid 25323989-f299-487e-9dad-89f0cc074ec0 */
-	private TipObjekta tip;
+/** @pdOid bfe41ce7-29f9-48bc-adbd-796c76c8a861 */
+public class Objekat implements Serializable{
+   /** @pdOid 9bbfd0bd-23cc-4810-acb7-ee4971161bdb */
+   private String ime;
+   /** @pdOid 3c20eb29-d23c-468e-8f15-9f5b246c6fba */
+   private String adresa;
+   /** @pdOid d958ae3c-6071-40d5-9673-af8766269c12 */
+   private TipObjekta tip;
+   
+   /** @pdRoleInfo migr=no name=Mesto assc=association12 mult=1..1 */
+   private Mesto mesto;
+   /** @pdRoleInfo migr=no name=Skladiste assc=association15 coll=java.util.Collection impl=java.util.HashSet mult=0..* side=A */
+   private java.util.Collection<Skladiste> skladista;
+   
+   public Objekat() {
+	   super();
+	   this.skladista = new ArrayList<>();
+   }
 
-	/** @pdRoleInfo migr=no name=Mesto assc=association11 mult=1..1 */
-	private Mesto mesto;
-	/**
-	 * @pdRoleInfo migr=no name=Skladistenje assc=association18
-	 *             coll=java.util.Collection impl=java.util.HashSet mult=0..*
-	 */
-	private java.util.Collection<Skladistenje> artikli;
-
-	public Objekat() {
-		super();
-		this.artikli = new ArrayList<>();
-	}
-
-	public Objekat(String ime, String adresa, TipObjekta tip, Mesto mesto) {
-		this();
-		this.ime = ime;
-		this.adresa = adresa;
-		this.tip = tip;
-		this.mesto = mesto;
-	}
-
-	/** @pdGenerated default getter */
-	public java.util.Collection<Skladistenje> getArtikli() {
-		if (artikli == null)
-			artikli = new java.util.HashSet<Skladistenje>();
-		return artikli;
-	}
-
-	/** @pdGenerated default iterator getter */
-	public java.util.Iterator getIteratorArtikli() {
-		if (artikli == null)
-			artikli = new java.util.HashSet<Skladistenje>();
-		return artikli.iterator();
-	}
-
-	/**
-	 * @pdGenerated default setter
-	 * @param newArtikli
-	 */
-	public void setArtikli(java.util.Collection<Skladistenje> newArtikli) {
-		removeAllArtikli();
-		for (java.util.Iterator iter = newArtikli.iterator(); iter.hasNext();)
-			addArtikli((Skladistenje) iter.next());
-	}
-
-	/**
-	 * @pdGenerated default add
-	 * @param newSkladistenje
-	 */
-	public void addArtikli(Skladistenje newSkladistenje) {
-		if (newSkladistenje == null)
-			return;
-		if (this.artikli == null)
-			this.artikli = new java.util.HashSet<Skladistenje>();
-		if (!this.artikli.contains(newSkladistenje)) {
-			this.artikli.add(newSkladistenje);
-			newSkladistenje.setObjekat(this);
-		}
-	}
-
-	/**
-	 * @pdGenerated default remove
-	 * @param oldSkladistenje
-	 */
-	public void removeArtikli(Skladistenje oldSkladistenje) {
-		if (oldSkladistenje == null)
-			return;
-		if (this.artikli != null)
-			if (this.artikli.contains(oldSkladistenje)) {
-				this.artikli.remove(oldSkladistenje);
-				oldSkladistenje.setObjekat((Objekat) null);
-			}
-	}
-
-	/** @pdGenerated default removeAll */
-	public void removeAllArtikli() {
-		if (artikli != null) {
-			Skladistenje oldSkladistenje;
-			for (java.util.Iterator iter = getIteratorArtikli(); iter.hasNext();) {
-				oldSkladistenje = (Skladistenje) iter.next();
-				iter.remove();
-				oldSkladistenje.setObjekat((Objekat) null);
-			}
-		}
-	}
-
-	public String getIme() {
-		return ime;
-	}
-
-	public void setIme(String ime) {
-		this.ime = ime;
-	}
-
-	public String getAdresa() {
-		return adresa;
-	}
-
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
-	}
-
-	public TipObjekta getTip() {
-		return tip;
-	}
-
-	public void setTip(TipObjekta tip) {
-		this.tip = tip;
-	}
-
-	public Mesto getMesto() {
-		return mesto;
-	}
-
-	public void setMesto(Mesto mesto) {
-		this.mesto = mesto;
-	}
+/** @pdGenerated default getter */
+   public java.util.Collection<Skladiste> getSkladista() {
+      if (skladista == null)
+         skladista = new java.util.HashSet<Skladiste>();
+      return skladista;
+   }
+   
+   /** @pdGenerated default iterator getter */
+   public java.util.Iterator getIteratorSkladista() {
+      if (skladista == null)
+         skladista = new java.util.HashSet<Skladiste>();
+      return skladista.iterator();
+   }
+   
+   /** @pdGenerated default setter
+     * @param newSkladista */
+   public void setSkladista(java.util.Collection<Skladiste> newSkladista) {
+      removeAllSkladista();
+      for (java.util.Iterator iter = newSkladista.iterator(); iter.hasNext();)
+         addSkladista((Skladiste)iter.next());
+   }
+   
+   /** @pdGenerated default add
+     * @param newSkladiste */
+   public void addSkladista(Skladiste newSkladiste) {
+      if (newSkladiste == null)
+         return;
+      if (this.skladista == null)
+         this.skladista = new java.util.HashSet<Skladiste>();
+      if (!this.skladista.contains(newSkladiste))
+      {
+         this.skladista.add(newSkladiste);
+         newSkladiste.setObjekat(this);      
+      }
+   }
+   
+   /** @pdGenerated default remove
+     * @param oldSkladiste */
+   public void removeSkladista(Skladiste oldSkladiste) {
+      if (oldSkladiste == null)
+         return;
+      if (this.skladista != null)
+         if (this.skladista.contains(oldSkladiste))
+         {
+            this.skladista.remove(oldSkladiste);
+            oldSkladiste.setObjekat((Objekat)null);
+         }
+   }
+   
+   /** @pdGenerated default removeAll */
+   public void removeAllSkladista() {
+      if (skladista != null)
+      {
+         Skladiste oldSkladiste;
+         for (java.util.Iterator iter = getIteratorSkladista(); iter.hasNext();)
+         {
+            oldSkladiste = (Skladiste)iter.next();
+            iter.remove();
+            oldSkladiste.setObjekat((Objekat)null);
+         }
+      }
+   }
+   
+   /** @param artikal 
+    * @param kolicina
+    * @pdOid abaaa432-4bfe-493a-9733-7261520c8a14 */
+   public void dodajSkladiste(Artikal artikal, int kolicina) {
+      // TODO: implement
+   }
+   
+   /** @param sifra
+    * @pdOid d01d4a2e-60eb-440c-91fe-949c8d742deb */
+   public Skladiste nadjiSkladiste(String sifra) {
+      // TODO: implement
+      return null;
+   }
+   
+   /** @param sifra
+    * @pdOid 95268b97-d361-4912-8422-f4e6f9f99243 */
+   public void obrisiSkladiste(String sifra) {
+      // TODO: implement
+   }
+   
+   /** @param sifra 
+    * @param kolicina
+    * @pdOid f54ddac2-dbb3-4b9c-b727-bb0d2cba977f */
+   public void obrisiSkladiste(String sifra, int kolicina) {
+      // TODO: implement
+   }
 
 }

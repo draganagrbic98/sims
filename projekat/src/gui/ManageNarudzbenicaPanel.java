@@ -77,7 +77,7 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 		this.add(tpl, "al center, pushx, split2");
 		
 		this.totalPrice = new JTextField();
-		this.totalPrice.setText(order.getUkupnaCenaNarudzbenice() + "");
+		this.totalPrice.setText(order.getCena() + "");
 		this.totalPrice.setEditable(false);
 		this.totalPrice.setSize(minw_tf, minh_tf);
 		this.totalPrice.setMinimumSize(totalPrice.getSize());
@@ -236,6 +236,7 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?","Upozorenje",dialogButton);
 				if(dialogResult == JOptionPane.YES_OPTION){
 					centerPanel.getWebShop().obrisiNarudzbenicu(order);
+					centerPanel.getCurrentUser().getKupac().obrisiNarudzbenicu(order);
 					centerPanel.setOrdersPanel();
 				}
 			}
@@ -278,7 +279,7 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 		} else {
 			int pn = (Integer) arg;
 			this.productsNumber.setText(pn + "");
-			this.totalPrice.setText(order.getUkupnaCenaNarudzbenice() + "");
+			this.totalPrice.setText(order.getCena() + "");
 		}
 
 		this.centerPanel.refresh();

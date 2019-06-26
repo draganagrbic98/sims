@@ -301,8 +301,8 @@ public class CenterPanel extends JPanel {
 
 				else {
 					
-					webShop.dodajKorisnika(untf.getText(), pstf.getText(), Uloga.kupac, new Kupac(ntf.getText(),
-							sntf.getText(), etf.getText(), atf.getText(), new Mesto(ptf.getText())));
+					webShop.dodajKorisnika(untf.getText(), pstf.getText(), ntf.getText(),
+							sntf.getText(), etf.getText(), atf.getText(), new Mesto(ptf.getText()));
 					logIn(webShop.nadjiKorisnika(untf.getText()));
 
 				}
@@ -683,8 +683,7 @@ public class CenterPanel extends JPanel {
 							JOptionPane.ERROR_MESSAGE);
 				else {
 					try {
-						StavkaCenovnika sc = new StavkaCenovnika(webShop.nadjiArtikal(ctf.getText()),
-								Double.parseDouble(ptf.getText()), cenovnik);	
+						StavkaCenovnika sc = new StavkaCenovnika(Double.parseDouble(ptf.getText()), webShop.nadjiArtikal(ctf.getText()), cenovnik);	
 						stavke.add(sc);
 						cb.removeItemAt(cb.getSelectedIndex());
 						JOptionPane.showMessageDialog(null, "Cena dodata", "", JOptionPane.INFORMATION_MESSAGE);
@@ -739,7 +738,7 @@ public class CenterPanel extends JPanel {
 		cb.setMaximumSize(new Dimension(minw_tf * 2, minh_tf));
 		this.add(cb, "al center, pushx, growx, wrap");
 
-		Cenovnik cenovnik = new Cenovnik();
+		Cenovnik cenovnik = new Cenovnik(this.webShop.getBrojCenovnika() + 1);
 		Collection<StavkaCenovnika> stavke = new ArrayList<>();
 		this.setPricePanel(cb, stavke, cenovnik);
 
@@ -861,8 +860,7 @@ public class CenterPanel extends JPanel {
 					
 					String adresa = (String) retval;
 					if (!adresa.trim().isEmpty()) {
-						Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), new Date(), adresa,
-								customer);
+						Narudzbenica order = new Narudzbenica(customer.getBrojNarudzbenica(), adresa, customer);
 						webShop.dodajNarudzbenicu(order);					
 						setOrdersPanel();
 					} else {
