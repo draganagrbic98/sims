@@ -223,7 +223,20 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				order.obavljenoPlacanje();
+				Object retval = JOptionPane.showInputDialog(null, "Unesite broj kreditne kartice", "Kupovina narudzbenice",
+						JOptionPane.QUESTION_MESSAGE, null, null, "");
+
+				if (retval != null) {
+					
+					String kartica = (String) retval;
+					if (!kartica.trim().isEmpty()) {
+						order.obavljenoPlacanje();
+					} else {
+						JOptionPane.showMessageDialog(null, "Nije uneta kreditna kartica!", "Greska",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
 			}
 		});
 
