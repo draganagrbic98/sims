@@ -214,7 +214,9 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				order.aktiviranZavrsetak();
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
+				if (dialogResult == JOptionPane.YES_OPTION)
+					order.aktiviranZavrsetak();
 			}
 		});
 
@@ -245,9 +247,8 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				int dialogButton = JOptionPane.YES_NO_OPTION;
-				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?","Upozorenje",dialogButton);
-				if(dialogResult == JOptionPane.YES_OPTION){
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
+				if (dialogResult == JOptionPane.YES_OPTION){
 					centerPanel.getWebShop().obrisiNarudzbenicu(order);
 					centerPanel.getCurrentUser().getKupac().obrisiNarudzbenicu(order);
 					centerPanel.setOrdersPanel();
