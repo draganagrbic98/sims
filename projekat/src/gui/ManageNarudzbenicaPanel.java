@@ -152,7 +152,8 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
 				temp.setLayout(new BorderLayout());
-
+				temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
 				JPanel sviArtikli = new JPanel(new MigLayout("gap 5px 10px"));
 				JScrollPane scrollSviArtikli = new JScrollPane(sviArtikli);
 				scrollSviArtikli.getVerticalScrollBar().setUnitIncrement(10);
@@ -185,6 +186,7 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
 				temp.setLayout(new BorderLayout());
+				temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 				JPanel sveStavke = new JPanel(new MigLayout("gap 5px 10px"));
 				JScrollPane scrollSveStavke = new JScrollPane(sveStavke);
