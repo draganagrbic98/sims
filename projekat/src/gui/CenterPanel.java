@@ -683,13 +683,15 @@ public class CenterPanel extends JPanel {
 							JOptionPane.ERROR_MESSAGE);
 				else {
 					try {
-						StavkaCenovnika sc = new StavkaCenovnika(Double.parseDouble(ptf.getText()), webShop.nadjiArtikal(ctf.getText()), cenovnik);	
+						double cena = Double.parseDouble(ptf.getText());
+						if (cena <= 0) throw new Exception();
+						StavkaCenovnika sc = new StavkaCenovnika(cena, webShop.nadjiArtikal(ctf.getText()), cenovnik);	
 						stavke.add(sc);
 						cb.removeItemAt(cb.getSelectedIndex());
 						JOptionPane.showMessageDialog(null, "Cena dodata", "", JOptionPane.INFORMATION_MESSAGE);
 					}
 					catch(Exception ee) {
-						JOptionPane.showMessageDialog(null, "Uneta cena nije broj!", "Greska",
+						JOptionPane.showMessageDialog(null, "Uneta neispravna cena!", "Greska",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
