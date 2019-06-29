@@ -18,6 +18,7 @@ public class StavkaNarudzbenicePanel extends JPanel {
 
 	private Narudzbenica narudzbenica;
 	private StavkaNarudzbenice stavka;
+	private JTextField kolicina;
 
 	public StavkaNarudzbenicePanel(Narudzbenica narudzbenica, StavkaNarudzbenice stavka) {
 		
@@ -40,10 +41,10 @@ public class StavkaNarudzbenicePanel extends JPanel {
 		JLabel al = new JLabel("Kolicina: ");
 		this.add(al, "al center, split2");
 
-		JTextField atf = new JTextField();
-		atf.setText(stavka.getKolicina() + "");
-		atf.setEditable(false);
-		this.add(atf);
+		this.kolicina = new JTextField();
+		this.kolicina.setText(stavka.getKolicina() + "");
+		this.kolicina.setEditable(false);
+		this.add(this.kolicina);
 
 		JButton rb = new JButton("Obrisi");
 		this.add(rb, "al center, wrap");
@@ -53,6 +54,7 @@ public class StavkaNarudzbenicePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				kolicina.setText(0 + "");
 				narudzbenica.obrisiStavku(stavka);
 			}
 		});
