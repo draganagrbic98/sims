@@ -11,17 +11,13 @@ import model.WebShop;
 public class Main {
 
 	public static void main(String[] args) {
-
-		/*
-		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
-		out.writeObject(new WebShop("WAU")); out.flush(); out.close();
-		 */
 		
 		ObjectInputStream in = null;
 		WebShop ws = null;
 		
 		// ovo bi trebalo da obezbedi automatsko ucitavanje default podataka
 		// u slucaju da ucitavanje podataka iz fajla ne uspe
+		
 		while (true) {
 			try {
 				in = new ObjectInputStream(new FileInputStream("out"));

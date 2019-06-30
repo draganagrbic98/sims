@@ -154,16 +154,14 @@ public class CenterPanel extends JPanel {
 		this.add(pptf, "al center, pushx, wrap");
 
 		JButton abtn = new JButton("Dodaj u korpu");
-		this.add(abtn, "al center, wrap");
-
-		if (this.currentUser == null || this.currentUser.getUloga() != Uloga.kupac) {
-			abtn.setEnabled(false);
-		}
+		if (this.currentUser != null && this.currentUser.getUloga() == Uloga.kupac)
+			this.add(abtn, "al center, wrap");
 		
 		abtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				JFrame temp = new JFrame();
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
