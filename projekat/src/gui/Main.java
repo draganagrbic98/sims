@@ -20,9 +20,8 @@ public class Main {
 		ObjectInputStream in = null;
 		WebShop ws = null;
 		
-		
 		// ovo bi trebalo da obezbedi automatsko ucitavanje default podataka
-		//  u slucaju da ucitavanje podataka iz fajla ne uspe
+		// u slucaju da ucitavanje podataka iz fajla ne uspe
 		while (true) {
 			try {
 				in = new ObjectInputStream(new FileInputStream("out"));
