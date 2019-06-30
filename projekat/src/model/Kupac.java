@@ -195,6 +195,16 @@ public class Kupac implements Serializable{
    public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
 	   this.narudzbenice.remove(narudzbenica);
    }
+   
+   public boolean hasKorpa() {
+	   
+	   for (Narudzbenica n: this.narudzbenice) {
+		   if (n.getStanje().getClass().getSimpleName().equals("Korpa"))
+			   return true;
+	   }
+	   return false;
+	   
+   }
 
    public String getIme() {
 		return ime;

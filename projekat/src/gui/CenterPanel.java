@@ -175,7 +175,11 @@ public class CenterPanel extends JPanel {
 				
 				if (currentUser.getKupac().getNarudzbenice().isEmpty()) {
 					sveNarudzbenice.add(new JLabel("NEMATE NARUDZBENICA!"), "al center, pushx, wrap");
-				} else {
+				}
+				else if (!currentUser.getKupac().hasKorpa()) {
+					sveNarudzbenice.add(new JLabel("NEMATE KORPI!"), "al center, pushx, wrap");
+				}
+				else {
 					int brojac = 0;
 					for (Narudzbenica n : currentUser.getKupac().getNarudzbenice()) {
 						if (n.getStanje().getClass().getSimpleName().equalsIgnoreCase("Korpa")) {
