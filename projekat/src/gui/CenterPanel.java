@@ -156,7 +156,7 @@ public class CenterPanel extends JPanel {
 		JButton abtn = new JButton("Dodaj u korpu");
 		this.add(abtn, "al center, wrap");
 
-		if (currentUser == null) {
+		if (this.currentUser == null || this.currentUser.getUloga() != Uloga.kupac) {
 			abtn.setEnabled(false);
 		}
 		
@@ -902,6 +902,10 @@ public class CenterPanel extends JPanel {
 
 		this.refresh();
 
+	}
+	
+	public void resetCurrentUser() {
+		this.currentUser = null;
 	}
 	
 	public NorthPanel getNorthPanel() {

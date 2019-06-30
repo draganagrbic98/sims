@@ -107,6 +107,7 @@ public class NorthPanel extends JPanel {
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					setUserPanel();
 					centerPanel.setWelcomeMessage();
+					centerPanel.resetCurrentUser();
 				}
 			}
 		});
