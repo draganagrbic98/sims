@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -155,6 +156,49 @@ public class CenterPanel extends JPanel {
 		pptf.setMinimumSize(pptf.getSize());
 		this.add(pptf, "al center, pushx, wrap");
 
+		JButton abtn = new JButton("Dodaj u korpu");
+		this.add(abtn, "al center, wrap");
+
+		if (currentUser == null) {
+			abtn.setEnabled(false);
+		}
+		
+		abtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JFrame temp = new JFrame();
+				temp.setSize(550, 550);
+				temp.setLocationRelativeTo(null);
+				temp.setLayout(new BorderLayout());
+				temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
+				JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
+				JScrollPane scrollSveNarudzbenice = new JScrollPane(sveNarudzbenice);
+				scrollSveNarudzbenice.getVerticalScrollBar().setUnitIncrement(10);
+				scrollSveNarudzbenice.getHorizontalScrollBar().setUnitIncrement(10);
+				
+				int brojac = 0;
+				for (Narudzbenica n : currentUser.getKupac().getNarudzbenice()) {
+					if (n.getStanje().getClass().getSimpleName().equalsIgnoreCase("Korpa")) {
+						if (brojac == 1) {
+							sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2, wrap");
+							brojac = 0;
+							continue;
+						} else {
+							sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2");
+						}
+						++brojac;
+					}
+				}
+				
+				temp.add(scrollSveNarudzbenice, BorderLayout.CENTER);
+				temp.setVisible(true);
+				
+			}
+		});
+		
 		this.refresh();
 
 	}
@@ -825,8 +869,10 @@ public class CenterPanel extends JPanel {
 
 		this.removeAll();
 		this.setLayout(new MigLayout("gap 5px 10px"));
+		
 		JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
 		JScrollPane scrollCenterPanel = new JScrollPane(sveNarudzbenice);
+		
 		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
 		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
 

@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +26,7 @@ public class NarudzbenicaPanel extends JPanel {
 		this.centerPanel = centerPanel;
 		
 		this.setLayout(new MigLayout("fill"));
-		this.setSize(250, 250);
+		this.setSize(270, 275);
 		this.setMinimumSize(this.getSize());
 		this.setMaximumSize(this.getSize());
 		
@@ -38,15 +39,19 @@ public class NarudzbenicaPanel extends JPanel {
 		this.add(onl, "al center, wrap");
 		
 		JLabel pnl = new JLabel("Ukupan broj artikala: " + this.narudzbenica.getBrojArtikala());
-		pnl.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		pnl.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		this.add(pnl, "al center, wrap");
 		
 		JLabel tpl = new JLabel("Ukupana cena: " + this.narudzbenica.getCena());
-		tpl.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		tpl.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		this.add(tpl, "al center, wrap");
 		
+		JLabel osl = new JLabel("Stanje narudzbenice: " + this.narudzbenica.getStanje().getClass().getSimpleName());
+		osl.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		this.add(osl, "al center, wrap");
+		
 		JButton mib = new JButton("Vise informacija");
-		this.add(mib, "al center, wrap");
+		this.add(mib, "al center, bottom, wrap");
 		
 		mib.addActionListener(new ActionListener() {
 
