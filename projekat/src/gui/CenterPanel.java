@@ -173,10 +173,7 @@ public class CenterPanel extends JPanel {
 				scrollSveNarudzbenice.getVerticalScrollBar().setUnitIncrement(10);
 				scrollSveNarudzbenice.getHorizontalScrollBar().setUnitIncrement(10);
 				
-				if (currentUser.getKupac().getNarudzbenice().isEmpty()) {
-					sveNarudzbenice.add(new JLabel("NEMATE NARUDZBENICA!"), "al center, pushx, wrap");
-				}
-				else if (!currentUser.getKupac().hasKorpa()) {
+				if (!currentUser.getKupac().hasKorpa()) {
 					sveNarudzbenice.add(new JLabel("NEMATE KORPI!"), "al center, pushx, wrap");
 				}
 				else {
