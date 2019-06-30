@@ -49,7 +49,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setProducts(centerPanel.getWebShop().pretraziArtikle(stf.getText()));
 			}
 		});
@@ -58,7 +57,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setProducts(centerPanel.getWebShop().getArtikli());
 			}
 		});
@@ -80,7 +78,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setSignUpPanel();
 			}
 		});
@@ -89,7 +86,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setSignInPanel();
 			}
 		});
@@ -107,7 +103,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
 				if (dialogResult == JOptionPane.YES_OPTION) {
 					setUserPanel();
@@ -130,7 +125,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setManagersPanel();
 			}
 		});
@@ -141,7 +135,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setCreateManagerPanel();
 			}
 		});
@@ -152,7 +145,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setDeleteManagerPanel();
 			}
 		});
@@ -171,7 +163,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setCreateProductPanel();
 			}
 		});
@@ -182,7 +173,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setDeleteProductPanel();
 			}
 		});
@@ -193,7 +183,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setCreatePriceListPanel();
 			}
 		});
@@ -204,7 +193,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setAddPricePanel();
 			}
 		});
@@ -223,7 +211,6 @@ public class NorthPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setOrdersPanel();
 			}
 		});

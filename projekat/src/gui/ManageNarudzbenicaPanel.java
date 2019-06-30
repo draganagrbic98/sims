@@ -147,7 +147,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				JFrame temp = new JFrame();
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
@@ -181,7 +180,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				JFrame temp = new JFrame();
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
@@ -215,7 +213,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
 				if (dialogResult == JOptionPane.YES_OPTION)
 					order.aktiviranZavrsetak();
@@ -226,7 +223,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				Object retval = JOptionPane.showInputDialog(null, "Unesite broj kreditne kartice", "Kupovina narudzbenice",
 						JOptionPane.QUESTION_MESSAGE, null, null, "");
 
@@ -248,7 +244,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 		this.deleteOrderButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
 				if (dialogResult == JOptionPane.YES_OPTION){
 					centerPanel.getWebShop().obrisiNarudzbenicu(order);
@@ -261,7 +256,6 @@ public class ManageNarudzbenicaPanel extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
 		if (arg instanceof ButtonEnabled) {
 			ButtonEnabled be = (ButtonEnabled) arg;
 			switch (be) {

@@ -75,7 +75,6 @@ public class CenterPanel extends JPanel {
 		try {
 			main_pic = ImageIO.read(new File("main_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -94,7 +93,6 @@ public class CenterPanel extends JPanel {
 		try {
 			logon_pic = ImageIO.read(new File("logon_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -113,7 +111,6 @@ public class CenterPanel extends JPanel {
 		try {
 			art_pic = ImageIO.read(new File("art_default_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -167,7 +164,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				JFrame temp = new JFrame();
 				temp.setSize(550, 550);
 				temp.setLocationRelativeTo(null);
@@ -179,20 +175,24 @@ public class CenterPanel extends JPanel {
 				scrollSveNarudzbenice.getVerticalScrollBar().setUnitIncrement(10);
 				scrollSveNarudzbenice.getHorizontalScrollBar().setUnitIncrement(10);
 				
-				int brojac = 0;
-				for (Narudzbenica n : currentUser.getKupac().getNarudzbenice()) {
-					if (n.getStanje().getClass().getSimpleName().equalsIgnoreCase("Korpa")) {
-						if (brojac == 1) {
-							sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2, wrap");
-							brojac = 0;
-							continue;
-						} else {
-							sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2");
+				if (currentUser.getKupac().getNarudzbenice().isEmpty()) {
+					sveNarudzbenice.add(new JLabel("NEMATE NARUDZBENICA!"), "al center, pushx, wrap");
+				} else {
+					int brojac = 0;
+					for (Narudzbenica n : currentUser.getKupac().getNarudzbenice()) {
+						if (n.getStanje().getClass().getSimpleName().equalsIgnoreCase("Korpa")) {
+							if (brojac == 1) {
+								sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2, wrap");
+								brojac = 0;
+								continue;
+							} else {
+								sveNarudzbenice.add(new AddArtikalPanel(n, product), "al center, pushx, split 2");
+							}
+							++brojac;
 						}
-						++brojac;
 					}
 				}
-				
+
 				temp.add(scrollSveNarudzbenice, BorderLayout.CENTER);
 				temp.setVisible(true);
 				
@@ -249,7 +249,6 @@ public class CenterPanel extends JPanel {
 		try {
 			reg_pic = ImageIO.read(new File("reg_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -333,8 +332,7 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				
 				if (emptyTextField(ntf, sntf, etf, atf, untf, pstf, ptf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -366,7 +364,6 @@ public class CenterPanel extends JPanel {
 		try {
 			login_pic = ImageIO.read(new File("login_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -400,7 +397,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(untf, pstf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -458,7 +454,6 @@ public class CenterPanel extends JPanel {
 		try {
 			men_add_pic = ImageIO.read(new File("men_add_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -492,7 +487,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(untf, pstf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -520,7 +514,6 @@ public class CenterPanel extends JPanel {
 		try {
 			men_del_pic = ImageIO.read(new File("men_del_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -544,7 +537,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(untf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -573,7 +565,6 @@ public class CenterPanel extends JPanel {
 		try {
 			art_add_pic = ImageIO.read(new File("art_add_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -617,7 +608,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(ctf, ntf, dtf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -646,7 +636,6 @@ public class CenterPanel extends JPanel {
 		try {
 			art_del_pic = ImageIO.read(new File("art_del_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -670,7 +659,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(ctf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -721,7 +709,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (emptyTextField(ctf, ptf))
 					JOptionPane.showMessageDialog(null, "Morate popuniti sva polja!", "Greska",
 							JOptionPane.ERROR_MESSAGE);
@@ -746,7 +733,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				ctf.setText((String) ((JComboBox) e.getSource()).getSelectedItem());
 			}
 		});
@@ -761,7 +747,6 @@ public class CenterPanel extends JPanel {
 		try {
 			cen_add_pic = ImageIO.read(new File("cen_add_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -794,14 +779,11 @@ public class CenterPanel extends JPanel {
 		cplb.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
 				cenovnik.dodajStavke(stavke);
 				webShop.dodajCenovnik(cenovnik);
 				JOptionPane.showMessageDialog(null, "Cenovnik kreiran", "", JOptionPane.INFORMATION_MESSAGE);
 				setDefault();
 				refresh(); 
-				
 			}
 		});
 
@@ -823,7 +805,6 @@ public class CenterPanel extends JPanel {
 		try {
 			cen_art_add_pic = ImageIO.read(new File("cen_art_add_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -871,6 +852,7 @@ public class CenterPanel extends JPanel {
 		this.setLayout(new MigLayout("gap 5px 10px"));
 		
 		JPanel sveNarudzbenice = new JPanel(new MigLayout("gap 5px 10px"));
+		sveNarudzbenice.setFocusTraversalKeysEnabled(true);
 		JScrollPane scrollCenterPanel = new JScrollPane(sveNarudzbenice);
 		
 		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
@@ -899,7 +881,6 @@ public class CenterPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 
 				Object retval = JOptionPane.showInputDialog(null, "Unesite adresu isporuke", "Adresa narudzbenice",
 						JOptionPane.QUESTION_MESSAGE, null, null, "");

@@ -53,7 +53,6 @@ public class StavkaNarudzbenicePanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				kolicina.setText(0 + "");
 				narudzbenica.obrisiStavku(stavka);
 			}

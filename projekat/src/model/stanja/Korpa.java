@@ -13,20 +13,17 @@ public class Korpa extends Stanje {
    
 	public Korpa(Narudzbenica narudzbenica) {
 		super(narudzbenica);
-		// TODO Auto-generated constructor stub
 	}
 
 	/** @pdOid 8a545c31-d840-4e31-8550-f694c75d891d */
 	@Override
 	public void entry() {
-      // TODO: implement
 		this.narudzbenica.osveziPrikaz();
    }
    
    /** @pdOid ddac0a25-4d06-4f05-975d-0d1569f5bc45 */
 	@Override
 	public void dodatArtikal() {
-      // TODO: implement
 		this.narudzbenica.omoguciBrisanje();
 		this.narudzbenica.omoguciZavrsetak();
 		this.narudzbenica.promeniStanje(this);
@@ -36,7 +33,6 @@ public class Korpa extends Stanje {
     * @pdOid 62d4e4ef-6b69-46e1-b7cf-dcf176bd304b */
 	@Override
 	public void obrisanArtikal(int kolicina) {
-      // TODO: implement
 		if (kolicina > 0) {
 			this.narudzbenica.promeniStanje(this);
 		}
@@ -50,7 +46,6 @@ public class Korpa extends Stanje {
    /** @pdOid 98097c8c-e811-44b3-b092-1076db76e41c */
 	@Override
 	public void aktiviranZavrsetak() {
-      // TODO: implement
 		Stanje novoStanje = new Zavrsena(this.narudzbenica);
 		this.narudzbenica.promeniStanje(novoStanje);
    }

@@ -18,19 +18,16 @@ public class MenadzerModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		return this.managers.size();
 	}
 
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
 		return this.columnNames.length;
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
 		Korisnik user = this.managers.get(rowIndex);
 		if (columnIndex == 0)
 			return user.getKorisnickoIme();
@@ -39,13 +36,11 @@ public class MenadzerModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public String getColumnName(int column) {
-		// TODO Auto-generated method stub
 		return this.columnNames[column];
 	}
 

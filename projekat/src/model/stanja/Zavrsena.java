@@ -13,13 +13,11 @@ public class Zavrsena extends Stanje {
    
 	public Zavrsena(Narudzbenica narudzbenica) {
 		super(narudzbenica);
-		// TODO Auto-generated constructor stub
 	}
 
 	/** @pdOid b2015087-3b6a-4ad9-82a4-2e8563249ccb */
 	@Override
 	public void entry() {
-      // TODO: implement
 		this.narudzbenica.blokirajDodavanje();
 		this.narudzbenica.blokirajBrisanje();
 		this.narudzbenica.blokirajZavrsetak();
@@ -48,7 +46,6 @@ public class Zavrsena extends Stanje {
    /** @pdOid e4a4b4f1-42a1-4401-bbfe-6f891cb80c97 */
 	@Override
 	public void obavljenoPlacanje() {
-      // TODO: implement
 		Stanje novoStanje = new Kupljeno(this.narudzbenica);
 		this.narudzbenica.promeniStanje(novoStanje);
    }

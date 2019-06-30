@@ -168,7 +168,6 @@ public class Kupac implements Serializable{
    /** @param sifra
     * @pdOid 1b652eb7-a67e-4b80-bb9f-6a5c5026a44b */
    public Artikal nadjiPreporuku(String sifra) {
-      // TODO: implement
       return null;
    }
    
@@ -181,7 +180,6 @@ public class Kupac implements Serializable{
    /** @param narudzbenica
     * @pdOid 5f32a955-bfeb-48ce-b19b-b94903898a4d */
    public void dodajNarudzbenicu(Narudzbenica narudzbenica) {
-      // TODO: implement
 	   this.narudzbenice.add(narudzbenica);
 	   ++this.brojNarudzbenica;
    }
@@ -189,14 +187,12 @@ public class Kupac implements Serializable{
    /** @param broj
     * @pdOid cf340aec-4b35-4b38-85e6-188f3c354b09 */
    public Narudzbenica nadjiNarudzbenicu(int broj) {
-      // TODO: implement
       return null;
    }
    
    /** @param narudzbenica
     * @pdOid 83b1fbfe-8d8e-4cd5-98bc-f93f3a4de430 */
    public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
-      // TODO: implement
 	   this.narudzbenice.remove(narudzbenica);
    }
 

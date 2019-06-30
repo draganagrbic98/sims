@@ -98,7 +98,6 @@ public class Akcija implements Serializable{
    /** @param sifra
     * @pdOid 95c3ad80-dcd4-4e52-86e4-0d294e6312eb */
    public StavkaAkcije nadjiStavku(String sifra) {
-      // TODO: implement
       return null;
    }
    

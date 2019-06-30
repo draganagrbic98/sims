@@ -99,14 +99,12 @@ public class Cenovnik implements Serializable{
     * @param cena
     * @pdOid 9dc24d42-738d-4a1b-9dbd-03ab934f783f */
    public void dodajStavku(Artikal artikal, double cena) {
-      // TODO: implement
 	   this.stavke.add(new StavkaCenovnika(cena, artikal, this));
    }
    
    /** @param sifra
     * @pdOid a059e69c-4e87-4c6a-a3ab-cc711033e6e5 */
    public StavkaCenovnika nadjiStavku(String sifra) {
-      // TODO: implement
       return null;
    }
    

@@ -141,7 +141,6 @@ public class Narudzbenica extends Observable implements Serializable{
    /** @param stanje
     * @pdOid 61eaa710-8050-4923-8adf-c6a6cbc14960 */
    public void promeniStanje(Stanje stanje) {
-      // TODO: implement
 	   stanje.entry();
 	   this.stanje = stanje;
 	   this.setChanged();
@@ -151,7 +150,6 @@ public class Narudzbenica extends Observable implements Serializable{
    /** @param artikal
     * @pdOid f5d42458-b40f-4426-93c3-432faf5f5e67 */
    public void dodajStavku(Artikal artikal) {
-      // TODO: implement
 	   StavkaNarudzbenice stavka = null;
 	   for (StavkaNarudzbenice sn: this.stavke) {
 		   if (sn.getArtikal().equals(artikal)) {
@@ -171,96 +169,82 @@ public class Narudzbenica extends Observable implements Serializable{
    /** @param sifra
     * @pdOid 8b7171e4-1265-4ab1-a791-0cb856cf4153 */
    public StavkaNarudzbenice nadjiStavku(String sifra) {
-      // TODO: implement
       return null;
    }
    
    /** @param stavka
     * @pdOid 0e66dbc6-9e5d-46b0-a1fe-f9bcc873935c */
    public void obrisiStavku(StavkaNarudzbenice stavka) {
-      // TODO: implement
 	   this.stavke.remove(stavka);
 	   this.stanje.obrisanArtikal(this.stavke.size());
    }
    
    /** @pdOid d7c7e035-3b7d-44cf-9bbc-1bd49fbd6d68 */
    public void aktiviranZavrsetak() {
-      // TODO: implement
 	   this.stanje.aktiviranZavrsetak();
    }
    
    /** @pdOid 5283fb50-710c-4426-995e-7653bfa8a31f */
    public void obavljenoPlacanje() {
-      // TODO: implement
 	   this.stanje.obavljenoPlacanje();
    }
    
    /** @pdOid 3d098425-62a5-4ac8-9e97-95586d4ae19c */
    public void blokirajDodavanje() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.ADD_PRODUCT_DISABLE);
    }
    
    /** @pdOid f27256c6-9427-46dd-aaf6-ff8a2fde66a2 */
    public void omoguciBrisanje() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.REMOVE_PRODUCT_ENABLE);
    }
    
    /** @pdOid fbf4b97e-dc24-46cd-839c-5deeb638b6ca */
    public void blokirajBrisanje() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.REMOVE_PRODUCT_DISABLE);
    }
    
    /** @pdOid 45ffaeb4-672b-456f-906b-edd4859cf72c */
    public void omoguciZavrsetak() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.FINISH_ENABLE);
    }
    
    /** @pdOid abf9007e-1b90-4b7b-b44c-e4129e16a265 */
    public void blokirajZavrsetak() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.FINISH_DISABLE);
    }
    
    /** @pdOid 0ab77335-2851-4012-aea5-8543cf5c9764 */
    public void omoguciKupovinu() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.BUY_ENABLE);
    }
    
    /** @pdOid b596c522-a8b0-460f-879a-4c8f46d5dd3b */
    public void blokirajKupovinu() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.BUY_DISABLE);
    }
    
    /** @pdOid c81680b0-6f1c-4c42-8a88-cbc858816ac3 */
    public void blokirajBrisanjeNarudzbenice() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(ButtonEnabled.DELETE_ORDER_DISABLE);
    }
    
    /** @pdOid 61f36fd5-7d89-4a57-ba58-17490c91aa88 */
    public void osveziPrikaz() {
-      // TODO: implement
 	   this.setChanged();
 	   this.notifyObservers(this.getBrojArtikala());
    }
    
    /** @pdOid 443e9d3b-3721-4880-a3e5-d2fa3ea57f27 */
    public void posaljiRobu() {
-      // TODO: implement
 	   System.out.println("Roba poslata...");
    }
    

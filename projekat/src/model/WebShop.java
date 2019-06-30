@@ -395,7 +395,6 @@ public class WebShop implements Serializable{
     * @param uloga
     * @pdOid c385c978-c2ac-4fc2-8530-8e356f6bcd4c */
    public void dodajKorisnika(String korisnickoIme, String lozinka, Uloga uloga) {
-      // TODO: implement
 	   this.korisnici.add(new Korisnik(korisnickoIme, lozinka, uloga));
    }
    
@@ -408,14 +407,12 @@ public class WebShop implements Serializable{
     * @param mesto
     * @pdOid 8c8d6a03-8602-4250-b058-938ca09ee0a9 */
    public void dodajKorisnika(String korisnickoIme, String lozinka, String ime, String prezime, String email, String adresa, Mesto mesto) {
-      // TODO: implement
 	   this.korisnici.add(new Korisnik(korisnickoIme, lozinka, ime, prezime, email, adresa, mesto));
    }
    
    /** @param korisnickoIme
     * @pdOid 2cefe982-db24-4d67-872c-42e1fb809d19 */
    public Korisnik nadjiKorisnika(String korisnickoIme) {
-      // TODO: implement
       for (Korisnik k: this.korisnici) {
     	  if (k.getKorisnickoIme().equals(korisnickoIme))
     		  return k;
@@ -427,7 +424,6 @@ public class WebShop implements Serializable{
     * @param lozinka
     * @pdOid 36aea9f2-e949-497f-ab04-b15218f1073a */
    public Korisnik nadjiKorisnika(String korisnickoIme, String lozinka) {
-      // TODO: implement
 	   for (Korisnik k: this.korisnici) {
 		   if (k.getKorisnickoIme().equals(korisnickoIme) && k.getLozinka().equals(lozinka))
 			   return k;
@@ -438,7 +434,6 @@ public class WebShop implements Serializable{
    /** @param korisnickoIme
     * @pdOid 3bda5325-1c64-45da-a640-2510de3e3d96 */
    public void obrisiKorisnika(String korisnickoIme) {
-      // TODO: implement
 	   Korisnik k = this.nadjiKorisnika(korisnickoIme);
 	   this.korisnici.remove(k);
    }
@@ -448,14 +443,12 @@ public class WebShop implements Serializable{
     * @pdOid fcbd66ff-e94a-49d8-ade0-0f08ff8f646d */
    public void dodajAkciju(Date pocetak, Date kraj) {
       // TODO: implement
-	   
    }
    
    /** @param pocetak 
     * @param kraj
     * @pdOid a2484e9a-3ea8-4c6b-b1a0-2842942c4c28 */
    public Akcija nadjiAkciju(Date pocetak, Date kraj) {
-      // TODO: implement
       return null;
    }
    
@@ -478,14 +471,12 @@ public class WebShop implements Serializable{
    /** @param ime
     * @pdOid 5ab93031-9d29-4e8b-ad9d-fd4854ca5429 */
    public Objekat nadjiObjekat(String ime) {
-      // TODO: implement
       return null;
    }
    
    /** @param cenovnik
     * @pdOid ea6074b3-ca52-4172-9bbd-f9d03a2ff960 */
    public void dodajCenovnik(Cenovnik cenovnik) {
-      // TODO: implement
 	   this.cenovnici.add(cenovnik);
 	   ++this.brojCenovnika;
    }
@@ -499,7 +490,6 @@ public class WebShop implements Serializable{
    /** @param broj
     * @pdOid 5eaf79e3-684d-4583-85b0-d7ec6be91907 */
    public Cenovnik nadjiCenovnik(int broj) {
-      // TODO: implement
       return null;
    }
    
@@ -512,14 +502,12 @@ public class WebShop implements Serializable{
    /** @param narudzbenica
     * @pdOid 82bab245-b821-4b00-b745-497b15bf3bb4 */
    public void dodajNarudzbenicu(Narudzbenica narudzbenica) {
-      // TODO: implement
 	   this.narudzbenice.add(narudzbenica);
    }
    
    /** @param narudzbenica
     * @pdOid 3b494726-b12b-414c-85a7-c465a369bff7 */
    public void obrisiNarudzbenicu(Narudzbenica narudzbenica) {
-      // TODO: implement
 	   this.narudzbenice.remove(narudzbenica);
    }
    
@@ -532,7 +520,6 @@ public class WebShop implements Serializable{
    /** @param parametar
     * @pdOid b94a577a-d809-4013-b5a1-07fd6712e56b */
    public Collection<Artikal> pretraziArtikle(String parametar) {
-      // TODO: implement
       Collection<Artikal> artikli = new ArrayList<>();
       for (Artikal a: this.artikli) {
     	  if (a.getNaziv().contains(parametar) || a.getOpis().contains(parametar))
@@ -546,14 +533,12 @@ public class WebShop implements Serializable{
     * @param opis
     * @pdOid 429415cc-8ce7-41c3-80b5-3ce815e66457 */
    public void dodajArtikal(String sifra, String naziv, String opis) {
-      // TODO: implement
 	   this.artikli.add(new Artikal(sifra, naziv, opis));
    }
    
    /** @param sifra
     * @pdOid 2a3af5dd-e998-4f67-bd88-5b679f06f4a6 */
    public Artikal nadjiArtikal(String sifra) {
-      // TODO: implement
       for (Artikal a: this.artikli) {
     	  if (a.getSifra().equals(sifra))
     		  return a;
@@ -564,7 +549,6 @@ public class WebShop implements Serializable{
    /** @param sifra
     * @pdOid fb2a17ce-720c-40ce-a716-22b1f68067e9 */
    public void obrisiArtikal(String sifra) {
-      // TODO: implement
 	   Artikal a = this.nadjiArtikal(sifra);
 	   this.artikli.remove(a);
    }

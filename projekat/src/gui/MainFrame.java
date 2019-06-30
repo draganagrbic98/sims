@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 import model.WebShop;
@@ -29,7 +30,7 @@ public class MainFrame extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setLayout(new BorderLayout());
-
+		
 		JScrollPane scrollCenterPanel = new JScrollPane(this.centerPanel);
 		scrollCenterPanel.getVerticalScrollBar().setUnitIncrement(10);
 		scrollCenterPanel.getHorizontalScrollBar().setUnitIncrement(10);
@@ -64,19 +65,19 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
-				// TODO Auto-generated method stub
-				try {
-					ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
-					out.writeObject(webShop);
-					out.flush();
-					out.close();
-					setVisible(false);
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				int dialogResult = JOptionPane.showConfirmDialog (null, "Da li ste sigurni?", "Upozorenje", JOptionPane.YES_NO_OPTION);
+				if (dialogResult == JOptionPane.YES_OPTION) {
+					try {
+						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out"));
+						out.writeObject(webShop);
+						out.flush();
+						out.close();
+						System.exit(0);
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 

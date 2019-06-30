@@ -230,7 +230,6 @@ public class Artikal implements Serializable{
    /** @param cena
     * @pdOid 67de74f9-4042-4e6d-9965-75e35098d1fb */
    public void dodajCenu(StavkaCenovnika cena) {
-      // TODO: implement
 	   this.cene.add(cena);
    }
    

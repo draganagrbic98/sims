@@ -44,7 +44,6 @@ public class StavkaAkcije implements Serializable{
    }
 
    public void setArtikal(Artikal artikal) {
-		// TODO Auto-generated method stub
 		this.artikal = artikal;
    }
 

@@ -13,13 +13,11 @@ public class Kupljeno extends Stanje {
    
 	public Kupljeno(Narudzbenica narudzbenica) {
 		super(narudzbenica);
-		// TODO Auto-generated constructor stub
 	}
 
 	/** @pdOid d38fca7d-e71b-4df8-b6f4-35d0670a1fa0 */
 	@Override
 	public void entry() {
-      // TODO: implement
 	   this.narudzbenica.blokirajKupovinu();
 	   this.narudzbenica.blokirajBrisanjeNarudzbenice();
 	   this.narudzbenica.posaljiRobu();

@@ -103,7 +103,6 @@ public class Objekat implements Serializable{
    /** @param sifra
     * @pdOid d01d4a2e-60eb-440c-91fe-949c8d742deb */
    public Skladiste nadjiSkladiste(String sifra) {
-      // TODO: implement
       return null;
    }
    

@@ -43,7 +43,6 @@ public class ArtikalPanel extends JPanel {
 		try {
 			art_pic = ImageIO.read(new File("art_default_img.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -62,7 +61,6 @@ public class ArtikalPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				centerPanel.setProduct(artikal);
 			}
 		});
