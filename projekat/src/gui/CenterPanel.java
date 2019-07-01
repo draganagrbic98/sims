@@ -437,7 +437,7 @@ public class CenterPanel extends JPanel {
 
 		this.removeAll();
 		this.setLayout(new BorderLayout());
-		JTable table = new JTable(new MenadzerModel(this.webShop.getMenadzeri()));
+		JTable table = new JTable(new MenadzerTable(this.webShop.getMenadzeri()));
 		table.setAutoCreateRowSorter(true);
 		JScrollPane sp = new JScrollPane(table);
 		this.add(sp);

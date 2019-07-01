@@ -6,12 +6,12 @@ import javax.swing.table.AbstractTableModel;
 
 import model.Korisnik;
 
-public class MenadzerModel extends AbstractTableModel {
+public class MenadzerTable extends AbstractTableModel {
 
 	private String[] columnNames = { "Korisnicko ime", "Lozinka" };
 	private List<Korisnik> managers;
 
-	public MenadzerModel(List<Korisnik> managers) {
+	public MenadzerTable(List<Korisnik> managers) {
 		super();
 		this.managers = managers;
 	}
