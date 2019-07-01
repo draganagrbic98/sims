@@ -11,7 +11,7 @@ import model.WebShop;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		ObjectInputStream in = null;
 		WebShop ws = null;
 		
